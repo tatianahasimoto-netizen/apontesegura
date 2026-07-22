@@ -9,7 +9,6 @@
     "primary06": { "$value": "#B4DCFD" },
     "primary07": { "$value": "#B8CAFF" },
     "primary08": { "$value": "#F2F5FF" },
-    "primary09": { "$value": "#F8FAFF" },
     "primaryStateSelected": { "$value": "#E0E8FF" },
     "primaryStateHover": { "$value": "#EBF0FF" },
     "onPrimary": { "$value": "#FFFFFF" },

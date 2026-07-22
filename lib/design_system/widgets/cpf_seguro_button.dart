@@ -231,13 +231,11 @@ class _Palette {
     required this.hover,
     required this.pressed,
     required this.onBase,
-    required this.bgHoverGhost,
   });
   final Color base;
   final Color hover;
   final Color pressed;
   final Color onBase;
-  final Color bgHoverGhost;
 }
 
 const _Palette _defaultPalette = _Palette(
@@ -245,7 +243,6 @@ const _Palette _defaultPalette = _Palette(
   hover: CpfSeguroColors.primary03,
   pressed: CpfSeguroColors.primary02,
   onBase: CpfSeguroColors.brandOnPrimary,
-  bgHoverGhost: CpfSeguroColors.primary08,
 );
 
 const _Palette _errorPalette = _Palette(
@@ -253,7 +250,6 @@ const _Palette _errorPalette = _Palette(
   hover: CpfSeguroColors.error02,
   pressed: CpfSeguroColors.error01,
   onBase: CpfSeguroColors.white,
-  bgHoverGhost: CpfSeguroColors.error07,
 );
 
 class _StyleShape {

@@ -1193,7 +1193,6 @@ class _ColorsSection extends StatelessWidget {
         ('primary-06', CpfSeguroColors.primary06),
         ('primary-07', CpfSeguroColors.primary07),
         ('primary-08', CpfSeguroColors.primary08),
-        ('primary-09', CpfSeguroColors.primary09),
       ]
     ),
     (

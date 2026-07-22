@@ -11,7 +11,6 @@ const Map<String, int> cpfSeguroColorTokensGen = {
   'primary06': 0xFFB4DCFD,
   'primary07': 0xFFB8CAFF,
   'primary08': 0xFFF2F5FF,
-  'primary09': 0xFFF8FAFF,
   'primaryStateSelected': 0xFFE0E8FF,
   'primaryStateHover': 0xFFEBF0FF,
   'onPrimary': 0xFFFFFFFF,
@@ -68,7 +67,6 @@ abstract final class CpfSeguroColorConsts {
   static const int primary06 = 0xFFB4DCFD;
   static const int primary07 = 0xFFB8CAFF;
   static const int primary08 = 0xFFF2F5FF;
-  static const int primary09 = 0xFFF8FAFF;
   static const int primaryStateSelected = 0xFFE0E8FF;
   static const int primaryStateHover = 0xFFEBF0FF;
   static const int onPrimary = 0xFFFFFFFF;

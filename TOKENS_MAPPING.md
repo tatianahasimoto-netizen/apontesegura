@@ -36,7 +36,8 @@ Estes tokens foram **mantidos com o valor original do cpf-seguro-ds** porque eu 
 tinha o valor real do A Ponte no momento desta cópia (não fabriquei nenhum hex).
 Confirme cada um no Figma antes de usar em produção:
 
-- `primary05, primary07, primary08, primary09, primaryStateSelected, primaryStateHover`
+- `primary05, primary07, primary08, primaryStateSelected, primaryStateHover`
+- ~~`primary09`~~ — removido do projeto (a pedido, sem uso real por nenhum componente). Já não é mais um TODO.
 - `secondary01, secondary02, secondary04, secondary05` (existem no Figma A Ponte, coleção `0.Theme/color/Secondary/*`, só não peguei o hex ainda)
 - `neutral05, neutral09` (muito provável que sejam iguais ao cpf-seguro-ds, dado o padrão acima, mas não confirmados)
 - Toda a família `warning*`, `success*`, `error01,02,03,05,06,07` — nenhum valor do A Ponte foi coletado para essas; os valores atuais são 100% herdados do cpf-seguro-ds

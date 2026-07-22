@@ -406,7 +406,7 @@ class _RegionLegend extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: CpfSeguroColors.primary09,
+            color: CpfSeguroColors.primary08,
             borderRadius: CpfSeguroRadius.all8,
           ),
           child: Text(

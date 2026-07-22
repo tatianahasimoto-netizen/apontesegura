@@ -36,9 +36,6 @@ class CpfSeguroColors {
   /// primary-08 = wash background sutil.
   static const Color primary08 = Color(CpfSeguroColorConsts.primary08);
 
-  /// primary-09 = wash mais claro ainda (bg do back office).
-  static const Color primary09 = Color(CpfSeguroColorConsts.primary09);
-
   /// Tint pálido do app (alinhado com ColorsPalette.primary10 no app real).
   /// Fora do DTCG (specific do app) — literal.
   static const Color primary10 = Color(0xFFEEF3FF);

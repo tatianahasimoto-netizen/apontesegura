@@ -27,7 +27,6 @@ class CpfSeguroPalette {
     required this.primary06,
     required this.primary07,
     required this.primary08,
-    required this.primary09,
     required this.primaryStateSelected,
     required this.primaryStateHover,
     required this.onPrimary,
@@ -85,7 +84,7 @@ class CpfSeguroPalette {
   /// Identificador do flavor ('cpf', 'aurora', ...). Aparece no dev inspect.
   final String id;
 
-  final Color primary01, primary02, primary03, primary04, primary05, primary06, primary07, primary08, primary09;
+  final Color primary01, primary02, primary03, primary04, primary05, primary06, primary07, primary08;
   final Color primaryStateSelected, primaryStateHover, onPrimary;
 
   final Color neutral01, neutral02, neutral03, neutral04, neutral05, neutral06, neutral07, neutral08, neutral09, neutral10;
@@ -115,7 +114,6 @@ class CpfSeguroPalette {
     primary06: Color(CpfSeguroColorConsts.primary06),
     primary07: Color(CpfSeguroColorConsts.primary07),
     primary08: Color(CpfSeguroColorConsts.primary08),
-    primary09: Color(CpfSeguroColorConsts.primary09),
     primaryStateSelected: Color(CpfSeguroColorConsts.primaryStateSelected),
     primaryStateHover: Color(CpfSeguroColorConsts.primaryStateHover),
     onPrimary: Color(CpfSeguroColorConsts.onPrimary),

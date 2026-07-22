@@ -24,7 +24,6 @@ void main() {
     'primary06': p.primary06.value,
     'primary07': p.primary07.value,
     'primary08': p.primary08.value,
-    'primary09': p.primary09.value,
     'primaryStateSelected': p.primaryStateSelected.value,
     'primaryStateHover': p.primaryStateHover.value,
     'onPrimary': p.onPrimary.value,
