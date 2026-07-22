@@ -12,12 +12,6 @@ enum CpfSeguroButtonType {
   primary,
   secondary,
   tertiary,
-
-  /// Conteúdo BRANCO pra fundo colorido/escuro (onboarding/splash):
-  /// secondaryWhite = outline branco SEM fundo; tertiaryWhite = fill
-  /// translúcido branco. Borda 1px.
-  secondaryWhite,
-  tertiaryWhite,
 }
 
 /// Tamanho (mirror Figma DS).
@@ -31,7 +25,7 @@ enum CpfSeguroButtonState { normal, error }
 ///
 /// Primitivo do DS. Match direto com o component do Figma:
 ///
-/// - **type** → 5 pesos visuais.
+/// - **type** → 3 pesos visuais (primary/secondary/tertiary).
 /// - **size** → sm (32h) · md (40h) · lg (56h).
 /// - **state** → `normal` | `error` (state=error adota paleta destrutiva).
 /// - **leadIcon / trailIcon** → nome do SVG em `assets/icons/`.
@@ -274,18 +268,6 @@ _StyleShape _resolveStyle(
   final p = isError ? _errorPalette : _defaultPalette;
 
   if (status == _Status.disabled) {
-    if (type == CpfSeguroButtonType.secondaryWhite) {
-      return _StyleShape(
-          bg: CpfSeguroColors.transparent,
-          color: CpfSeguroColors.white.withValues(alpha: 0.4),
-          border: CpfSeguroColors.white.withValues(alpha: 0.4));
-    }
-    if (type == CpfSeguroButtonType.tertiaryWhite) {
-      return _StyleShape(
-          bg: CpfSeguroColors.white.withValues(alpha: 0.06),
-          color: CpfSeguroColors.white.withValues(alpha: 0.4),
-          border: CpfSeguroColors.white.withValues(alpha: 0.25));
-    }
     // secondary (outline) fica transparente + borda; tertiary sem borda.
     final bool outlined = type == CpfSeguroButtonType.secondary;
     return _StyleShape(
@@ -325,26 +307,6 @@ _StyleShape _resolveStyle(
               : CpfSeguroColors.transparent;
       return _StyleShape(
           bg: bg, color: isError ? CpfSeguroColors.error04 : s.textTertiary);
-    case CpfSeguroButtonType.secondaryWhite:
-      // Outline BRANCO pra fundo colorido (sem fundo).
-      final bg = status == _Status.hover
-          ? CpfSeguroColors.white.withValues(alpha: 0.10)
-          : status == _Status.pressed
-              ? CpfSeguroColors.white.withValues(alpha: 0.16)
-              : CpfSeguroColors.transparent;
-      return _StyleShape(
-          bg: bg, color: CpfSeguroColors.white, border: CpfSeguroColors.white);
-    case CpfSeguroButtonType.tertiaryWhite:
-      // Fill translúcido branco + borda branca 1px.
-      final bg = status == _Status.hover
-          ? CpfSeguroColors.white.withValues(alpha: 0.22)
-          : status == _Status.pressed
-              ? CpfSeguroColors.white.withValues(alpha: 0.28)
-              : CpfSeguroColors.white.withValues(alpha: 0.14);
-      return _StyleShape(
-          bg: bg,
-          color: CpfSeguroColors.white,
-          border: CpfSeguroColors.white.withValues(alpha: 0.38));
   }
 }
 

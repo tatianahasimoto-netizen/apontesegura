@@ -442,7 +442,6 @@ class _CatalogScreenState extends State<_CatalogScreen> {
           _GlassSurfaceSection(),
           _MacroHeader('CARDS'),
           _FeatureCardSection(),
-          _FeatureDetailCardSection(),
           _InfoCardSection(),
           _QuickAccessCardSection(),
           _MacroHeader('LISTAS & LINHAS'),
@@ -1576,7 +1575,7 @@ class _ButtonsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Section(
-      title: 'BUTTON · 5 types × 2 states × 3 sizes + chatLift',
+      title: 'BUTTON · 3 types × 2 states × 3 sizes + chatLift',
       role: 'A ação. Primary = a ação principal da tela (Pagar, Continuar); secondary/tertiary descem a hierarquia; state error = destrutivo. Como CTA, vive ancorado na bottom bar.',
       composedOf: const ['Icon', 'Color', 'Typography', 'Radius', 'Shadow'],
       specId: 'design-system-button',
@@ -1601,11 +1600,6 @@ class _ButtonsSection extends StatelessWidget {
             CpfSeguroButton(label: 'primary', type: CpfSeguroButtonType.primary, onPressed: _noop),
             CpfSeguroButton(label: 'secondary', type: CpfSeguroButtonType.secondary, onPressed: _noop),
             CpfSeguroButton(label: 'tertiary', type: CpfSeguroButtonType.tertiary, onPressed: _noop),
-          ]),
-          // Família branca — precisa de fundo colorido/escuro pra aparecer.
-          _rowOnDark('Família branca — sobre fundo colorido/escuro (onboarding/splash)', const [
-            CpfSeguroButton(label: 'secondary-white', type: CpfSeguroButtonType.secondaryWhite, onPressed: _noop),
-            CpfSeguroButton(label: 'tertiary-white', type: CpfSeguroButtonType.tertiaryWhite, onPressed: _noop),
           ]),
           _row('State error (destructive)', const [
             CpfSeguroButton(label: 'primary', type: CpfSeguroButtonType.primary, state: CpfSeguroButtonState.error, onPressed: _noop),
@@ -1647,30 +1641,6 @@ class _ButtonsSection extends StatelessWidget {
     );
   }
 
-  // Como _row, mas num painel primary-04 — pra a família branca (white outline /
-  // fill translúcido) ficar visível (branco no branco somem).
-  Widget _rowOnDark(String label, List<Widget> children) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Text(label, style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-          ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: CpfSeguroColors.primary04,
-              borderRadius: CpfSeguroRadius.all16,
-            ),
-            child: Wrap(spacing: 12, runSpacing: 12, children: children),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -3714,42 +3684,6 @@ class _FeatureCardSection extends StatelessWidget {
           description: 'Cartões num só lugar.',
         ),
       ]),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// FeatureDetailCard
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _FeatureDetailCardSection extends StatelessWidget {
-  const _FeatureDetailCardSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'FEATUREDETAILCARD · detalhe de feature (Jornada)',
-      composedOf: const ['Icon', 'StatusTag', 'Color', 'Typography', 'Radius'],
-      child: SizedBox(
-        width: 360,
-        child: CpfSeguroFeatureDetailCard(
-          icon: CpfSeguroIcons.fingerprintLight,
-          iconBg: CpfSeguroColors.primary04,
-          name: 'Sou eu!',
-          nameColor: CpfSeguroColors.primary04,
-          status: const CpfSeguroStatusTagData(label: 'Limitado', tone: CpfSeguroStatusTone.warning),
-          heading: 'Autentique-se sem senha',
-          description: 'Aprove logins e transações com sua biometria.',
-          sections: const [
-            CpfSeguroFeatureDetailSection(capabilities: [
-              CpfSeguroFeatureCapability(icon: CpfSeguroIcons.keyLight, label: 'Login por código'),
-            ]),
-            CpfSeguroFeatureDetailSection(header: 'NO NÍVEL 2', capabilities: [
-              CpfSeguroFeatureCapability(icon: CpfSeguroIcons.fingerprintLight, label: 'Biometria'),
-              CpfSeguroFeatureCapability(icon: CpfSeguroIcons.mobileLight, label: 'Toque'),
-            ]),
-          ],
-        ),
-      ),
     );
   }
 }

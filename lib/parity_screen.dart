@@ -346,7 +346,6 @@ const _items = <_Item>[
   _Item('DetailRow', _Status.used, layer: _Layer.molecule, ds: 'CpfSeguroDetailRow', app: 'ds.DetailRow (via ReceiptInfoRow)', note: 'decisão 07-21 (app): DS virou HORIZONTAL (label esq / valor dir). ReceiptInfoRow (comprovante pix) delega'),
   _Item('FaceIdCard', _Status.dsDefinition, layer: _Layer.molecule, ds: 'CpfSeguroFaceIdCard'),
   _Item('FeatureCard', _Status.used, layer: _Layer.molecule, ds: 'CpfSeguroFeatureCard', app: 'ds.FeatureCard (via QuickAccessCardWithStatusComponent)', note: 'decisão 07-21 (app): DS redesenhado no look do app (surface branca + tile 34 state-color + status em OVERLAY via slot statusOverlay). QuickAccess delega; máquina de estado fica no wrapper (alimenta brandColor + overlay)'),
-  _Item('FeatureDetailCard', _Status.dsDefinition, layer: _Layer.molecule, ds: 'CpfSeguroFeatureDetailCard', note: 'app não tem bespoke maior · feature-detail já usa ds.InfoCard (cpf_seguro_info_page)'),
   _Item('JourneyStep', _Status.playbookOnly, layer: _Layer.molecule, ds: 'CpfSeguroJourneyStep'),
   _Item('Keyboard', _Status.dsDefinition, layer: _Layer.organism, ds: 'CpfSeguroKeyboard'),
   _Item('NavigationButton', _Status.playbookOnly, layer: _Layer.atom, ds: 'CpfSeguroNavigationButton', note: 'DIVERGENTE + colisão de nome: DS é pilha de CTAs full-width (footer de bottom-app); PixConfigMenuComponent é linha settings (título/subtítulo + chevron + divider) e está SEM call-site (código morto). Não é o mesmo word'),

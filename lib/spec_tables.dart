@@ -109,7 +109,6 @@ class _SpecTablesScreenState extends State<SpecTablesScreen> {
           SpecTierHeader(tier: 'ORGANISMS', description: 'Composições em superfície — consomem moléculas.'),
           _TopAppBarSpec(),
           _BottomAppSpec(),
-          _FeatureDetailCardSpec(),
           _PasswordBottomSheetSpec(),
           _ExitConfirmSheetSpec(),
           _BiometriaOverlaySpec(),
@@ -226,12 +225,6 @@ class _ButtonSpec extends StatelessWidget {
     ('tertiary', CpfSeguroButtonType.tertiary),
   ];
 
-  // Família branca de fundo escuro — só faz sentido sobre superfície colorida.
-  static const _whiteTypes = [
-    ('secondary-white', CpfSeguroButtonType.secondaryWhite),
-    ('tertiary-white', CpfSeguroButtonType.tertiaryWhite),
-  ];
-
   static const _sizes = [
     ('sm', CpfSeguroButtonSize.sm),
     ('md', CpfSeguroButtonSize.md),
@@ -245,9 +238,8 @@ class _ButtonSpec extends StatelessWidget {
     return SpecSection(
       title: 'Button',
       composedOf: const ['IconAccessory', 'Color', 'Typography', 'Radius', 'Shadow'],
-      subtitle: '5 types × 2 states (normal · error) × 3 sizes + status disabled. '
-          '3 de fundo claro na matriz; a família branca (outline / fill '
-          'translúcido) vai na tabela de fundo escuro abaixo. Radius sempre pill.',
+      subtitle: '3 types × 2 states (normal · error) × 3 sizes + status disabled. '
+          'Radius sempre pill.',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -277,35 +269,6 @@ class _ButtonSpec extends StatelessWidget {
                 onPressed: () {},
               );
             },
-          ),
-          const SizedBox(height: 24),
-          Text('Família branca · sobre fundo colorido/escuro',
-              style: CpfSeguroType.labelSm.copyWith(
-                  color: CpfSeguroColors.neutral05, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 12),
-          CpfSeguroSpecTable(
-            cellWidth: 200,
-            cellHeight: 92,
-            columnGroups: const [
-              SpecAxisGroup(title: 'Type', subs: ['secondary-white', 'tertiary-white']),
-            ],
-            rowGroups: const [
-              SpecAxisGroup(title: '·', subs: ['fundo escuro']),
-            ],
-            cellBuilder: (r, c) => Container(
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: CpfSeguroColors.primary04,
-                borderRadius: CpfSeguroRadius.all16,
-              ),
-              child: Center(
-                child: CpfSeguroButton(
-                  label: 'Button',
-                  type: _whiteTypes[c].$2,
-                  onPressed: () {},
-                ),
-              ),
-            ),
           ),
         ],
       ),
@@ -2842,54 +2805,6 @@ class _BottomAppSpecState extends State<_BottomAppSpec> {
                 input: CpfSeguroChatInput(controller: _chat, placeholder: 'Digite...'),
               ),
           },
-        ),
-      ),
-    );
-  }
-}
-
-class _FeatureDetailCardSpec extends StatelessWidget {
-  const _FeatureDetailCardSpec();
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'FeatureDetailCard',
-      composedOf: const ['StatusTag', 'Color', 'Gradients', 'Typography', 'Radius'],
-      subtitle: 'Card detalhado da feature · header (icon 34 + nome + StatusTag) + heading/description + '
-          'sections com pills current (primary) / future (placeholder), dashed divider.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 380,
-        cellHeight: 300,
-        columnGroups: const [
-          SpecAxisGroup(title: '·', subs: ['card']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['detail']),
-        ],
-        cellBuilder: (r, c) => SizedBox(
-          width: 340,
-          child: CpfSeguroFeatureDetailCard(
-            icon: CpfSeguroIcons.idCardLight,
-            iconBg: CpfSeguroColors.primary04,
-            name: 'CPF Seguro',
-            nameColor: CpfSeguroColors.primary04,
-            status: const CpfSeguroStatusTagData(label: 'Ativo', tone: CpfSeguroStatusTone.success),
-            heading: 'O que você já tem',
-            description: 'Recursos disponíveis no seu nível atual.',
-            sections: const [
-              CpfSeguroFeatureDetailSection(
-                capabilities: [
-                  CpfSeguroFeatureCapability(icon: CpfSeguroIcons.checkLight, label: 'Bloqueio de CPF'),
-                ],
-              ),
-              CpfSeguroFeatureDetailSection(
-                header: 'Desbloqueie · Nível 3',
-                capabilities: [
-                  CpfSeguroFeatureCapability(icon: CpfSeguroIcons.lockLight, label: 'Monitoramento'),
-                ],
-              ),
-            ],
-          ),
         ),
       ),
     );

@@ -70,7 +70,6 @@ export 'widgets/cpf_seguro_menu_button.dart';
 // Listas e cards
 export 'widgets/cpf_seguro_app_list.dart';
 export 'widgets/cpf_seguro_feature_card.dart';
-export 'widgets/cpf_seguro_feature_detail_card.dart';
 export 'widgets/cpf_seguro_info_card.dart';
 export 'widgets/cpf_seguro_amount.dart';
 export 'widgets/cpf_seguro_quick_access_card.dart';
