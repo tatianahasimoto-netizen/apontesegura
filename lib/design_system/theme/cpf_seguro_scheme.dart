@@ -45,6 +45,10 @@ class CpfSeguroScheme {
     required this.primaryPressed,
     required this.primarySubtle,
     required this.onPrimarySubtle,
+    // Secondary (A Ponte — acento usado em Card-Acordo / Status-tag)
+    required this.secondary,
+    required this.secondaryBorder,
+    required this.secondarySubtle,
     // Status — success / warning / error / secure (base + subtle bg)
     required this.success,
     required this.onSuccess,
@@ -99,6 +103,9 @@ class CpfSeguroScheme {
   /// Conteúdo sobre [primarySubtle].
   final Color onPrimarySubtle;
 
+  /// Acento secundário (A Ponte) — badge/borda de Card-Acordo, Status-tag.
+  final Color secondary, secondaryBorder, secondarySubtle;
+
   final Color success, onSuccess, successSubtle;
   final Color warning, onWarning, warningSubtle;
   final Color error, onError, errorSubtle;
@@ -113,11 +120,11 @@ class CpfSeguroScheme {
   factory CpfSeguroScheme.light(CpfSeguroPalette p) => CpfSeguroScheme(
         brightness: Brightness.light,
         palette: p,
-        bg: p.white,
-        bgMenu: p.white,
-        fg: p.neutral01,
-        surface: p.white,
-        onSurface: p.neutral01,
+        bg: p.commonBg,
+        bgMenu: p.commonBgMenu,
+        fg: p.commonFg,
+        surface: p.commonBg,
+        onSurface: p.commonFg,
         surfaceMuted: p.neutral09,
         textSecondary: p.neutral02,
         textTertiary: p.neutral03,
@@ -127,12 +134,15 @@ class CpfSeguroScheme {
         divider: p.neutral09,
         glassTint: const Color(0xCCFFFFFF), // white @ 80%
 
-        primary: p.primary04,
-        onPrimary: p.onPrimary,
+        primary: p.brandPrincipal,
+        onPrimary: p.brandOnPrincipal,
         primaryHover: p.primaryStateHover,
         primaryPressed: p.primaryStateSelected,
-        primarySubtle: p.primary08,
-        onPrimarySubtle: p.primary04,
+        primarySubtle: p.brandAlpha15,
+        onPrimarySubtle: p.brandPrincipal,
+        secondary: p.secondary03,
+        secondaryBorder: p.secondary06,
+        secondarySubtle: p.secondary07,
         success: p.success04,
         onSuccess: p.white,
         successSubtle: p.success07,
@@ -181,6 +191,9 @@ class CpfSeguroScheme {
         primaryPressed: p.primary03,
         primarySubtle: p.primary03,
         onPrimarySubtle: p.primary06,
+        secondary: p.secondary03,
+        secondaryBorder: p.secondary06,
+        secondarySubtle: p.secondary07,
         success: p.success05,
         onSuccess: p.success01,
         successSubtle: p.success02,

@@ -67,6 +67,15 @@ void main() {
     'secure05': p.secure05.value,
     'secure07': p.secure07.value,
     'secure08': p.secure08.value,
+    'secondary03': p.secondary03.value,
+    'secondary06': p.secondary06.value,
+    'secondary07': p.secondary07.value,
+    'commonFg': p.commonFg.value,
+    'commonBg': p.commonBg.value,
+    'commonBgMenu': p.commonBgMenu.value,
+    'brandPrincipal': p.brandPrincipal.value,
+    'brandOnPrincipal': p.brandOnPrincipal.value,
+    'brandAlpha15': p.brandAlpha15.value,
   };
 
   test('gerado (DTCG) == CpfSeguroPalette.cpf (paridade 1:1)', () {
@@ -129,6 +138,9 @@ void main() {
       'primaryPressed': s.primaryPressed.value,
       'primarySubtle': s.primarySubtle.value,
       'onPrimarySubtle': s.onPrimarySubtle.value,
+      'secondary': s.secondary.value,
+      'secondaryBorder': s.secondaryBorder.value,
+      'secondarySubtle': s.secondarySubtle.value,
       'success': s.success.value,
       'onSuccess': s.onSuccess.value,
       'successSubtle': s.successSubtle.value,
@@ -169,6 +181,9 @@ void main() {
       'primaryPressed': s.primaryPressed.value,
       'primarySubtle': s.primarySubtle.value,
       'onPrimarySubtle': s.onPrimarySubtle.value,
+      'secondary': s.secondary.value,
+      'secondaryBorder': s.secondaryBorder.value,
+      'secondarySubtle': s.secondarySubtle.value,
       'success': s.success.value,
       'onSuccess': s.onSuccess.value,
       'successSubtle': s.successSubtle.value,
@@ -223,7 +238,7 @@ void main() {
     }
 
     check(CpfSeguroGradientConsts.brandLift, const Alignment(-0.5, -1),
-        const Alignment(1, 0.5), const [0.0425, 0.8665], const [0xFF002CA8, 0xFF2861FF]);
+        const Alignment(1, 0.5), const [0.0425, 0.8665], const [0xFF0468BF, 0xFF2861FF]);
     check(CpfSeguroGradientConsts.screenBg, const Alignment(0, -1),
         const Alignment(0, 1), null, const [0xFFFFFFFF, 0xFFF2F5FF]);
     check(CpfSeguroGradientConsts.cardPv, const Alignment(-0.62, -0.78),
@@ -252,7 +267,7 @@ void main() {
     t2(CpfSeguroTypeConsts.bodyLg, 16, w4, 24, 0.5);
     t2(CpfSeguroTypeConsts.bodyMd, 14, w4, 20, 0.25);
     t2(CpfSeguroTypeConsts.bodySm, 12, w4, 16, 0.4);
-    t2(CpfSeguroTypeConsts.labelLg, 14, w6, 20, 1.4);
+    t2(CpfSeguroTypeConsts.labelLg, 14, w5, 20, 1.4);
     t2(CpfSeguroTypeConsts.labelMd, 12, w5, 16, 0.5);
     t2(CpfSeguroTypeConsts.labelSm, 11, w5, 16, 0.5);
     t2(CpfSeguroTypeConsts.display, 36, w7, 44, -0.5);

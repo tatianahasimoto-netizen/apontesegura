@@ -75,6 +75,18 @@ class CpfSeguroPalette {
     required this.secure05,
     required this.secure07,
     required this.secure08,
+    // Secondary (A Ponte — família de acento que o cpf-seguro-ds não tinha)
+    required this.secondary03,
+    required this.secondary06,
+    required this.secondary07,
+    // Common (A Ponte — Common/FG e Common/BG são distintos de Neutral/White)
+    required this.commonFg,
+    required this.commonBg,
+    required this.commonBgMenu,
+    // Brand (A Ponte — Brand/Principal é um token à parte da rampa Primary)
+    required this.brandPrincipal,
+    required this.brandOnPrincipal,
+    required this.brandAlpha15,
   });
 
   /// Identificador do flavor ('cpf', 'aurora', ...). Aparece no dev inspect.
@@ -90,6 +102,10 @@ class CpfSeguroPalette {
   final Color warning01, warning02, warning03, warning04, warning05, warning06, warning07;
   final Color success01, success02, success03, success04, success05, success06, success07;
   final Color secure02, secure03, secure04, secure05, secure07, secure08;
+
+  final Color secondary03, secondary06, secondary07;
+  final Color commonFg, commonBg, commonBgMenu;
+  final Color brandPrincipal, brandOnPrincipal, brandAlpha15;
 
   // ═══════════════════════════════════════════════════════════════════════
   // Flavor padrão — CPF SEGURO (azul). 1:1 com o legado CpfSeguroColors.
@@ -150,6 +166,15 @@ class CpfSeguroPalette {
     secure05: Color(CpfSeguroColorConsts.secure05),
     secure07: Color(CpfSeguroColorConsts.secure07),
     secure08: Color(CpfSeguroColorConsts.secure08),
+    secondary03: Color(CpfSeguroColorConsts.secondary03),
+    secondary06: Color(CpfSeguroColorConsts.secondary06),
+    secondary07: Color(CpfSeguroColorConsts.secondary07),
+    commonFg: Color(CpfSeguroColorConsts.commonFg),
+    commonBg: Color(CpfSeguroColorConsts.commonBg),
+    commonBgMenu: Color(CpfSeguroColorConsts.commonBgMenu),
+    brandPrincipal: Color(CpfSeguroColorConsts.brandPrincipal),
+    brandOnPrincipal: Color(CpfSeguroColorConsts.brandOnPrincipal),
+    brandAlpha15: Color(CpfSeguroColorConsts.brandAlpha15),
   );
 
   /// Flavors disponíveis (cresce quando entrar parceiro white-label).
