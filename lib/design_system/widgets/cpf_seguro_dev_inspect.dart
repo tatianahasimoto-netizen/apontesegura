@@ -51,8 +51,6 @@ String cpfSeguroColorToken(Color? c) {
     0xFFFEF3F2: 'error-07',
     0xFF12B76A: 'success-04',
     0xFFF79009: 'warning-04',
-    0xFF272727: 'cardDark',
-    0xFFA23737: 'errorBanner',
   };
   return map[c.value] ?? '#${(c.value & 0xFFFFFF).toRadixString(16).padLeft(6, '0').toUpperCase()}';
 }

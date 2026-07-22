@@ -1437,31 +1437,18 @@ class _ShadowTokensSpec extends StatelessWidget {
   const _ShadowTokensSpec();
 
   static const _tokens = <(String, Color, Offset, double, String)>[
-    // Neutral (preto) — 4
-    ('blackAlpha8', CpfSeguroColors.blackAlpha8, Offset(0, 4), 10, 'toast'),
-    ('blackAlpha13', CpfSeguroColors.blackAlpha13, Offset(5, 4), 20, 'card / bottom nav'),
-    ('blackAlpha18', CpfSeguroColors.blackAlpha18, Offset(0, 1), 0, 'numpad key press'),
-    ('blackAlpha20', CpfSeguroColors.blackAlpha20, Offset(0, 4), 10, 'tooltip'),
-    // Primary (azul brand) — 4
-    ('primary05Alpha20', CpfSeguroColors.primary05Alpha20, Offset(0, 4), 10, 'nav item lift'),
-    ('primary04Alpha18', CpfSeguroColors.primary04Alpha18, Offset(0, 2), 8, 'chat button'),
-    ('primary05Alpha32', CpfSeguroColors.primary05Alpha32, Offset(0, 12), 40, 'completion card'),
-    ('primary05Alpha40', CpfSeguroColors.primary05Alpha40, Offset(2, 8), 20, 'banner drop'),
-    // Error (vermelho) — 4
-    ('error04Alpha12', CpfSeguroColors.error04Alpha12, Offset(0, 4), 10, 'error toast'),
-    ('error04Alpha20', CpfSeguroColors.error04Alpha20, Offset(0, 4), 12, 'delete button'),
-    ('error04Alpha32', CpfSeguroColors.error04Alpha32, Offset(0, 8), 20, 'destructive card'),
-    ('error04Alpha40', CpfSeguroColors.error04Alpha40, Offset(2, 8), 24, 'danger banner'),
+    ('blackAlpha20', CpfSeguroColors.blackAlpha20, Offset(0, 4), 10, 'tooltip, gap marker (dev mode)'),
+    ('blackAlpha40', CpfSeguroColors.blackAlpha40, Offset(0, 4), 12, 'sheet scrim, biometria overlay'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return SpecSection(
       title: 'Shadow tokens (alphas da paleta)',
-      subtitle: 'Cada sombra é um alpha de uma cor da paleta (primary/neutral/'
-          'error). Nome do token diz a cor base + a opacidade — ex: '
-          '`primary05Alpha40` = primary05 @ 40%. Se um contexto pede variante '
-          'nova, criar em CpfSeguroColors ANTES de consumir no widget.',
+      subtitle: 'Cada sombra é um alpha de uma cor da paleta. Nome do token diz '
+          'a cor base + a opacidade — ex: `blackAlpha40` = black @ 40%. Se um '
+          'contexto pede variante nova, criar em CpfSeguroColors ANTES de '
+          'consumir no widget.',
       child: CpfSeguroSpecTable(
         cellWidth: 340,
         cellHeight: 96,
@@ -1469,14 +1456,8 @@ class _ShadowTokensSpec extends StatelessWidget {
           SpecAxisGroup(title: 'Preview', subs: ['·']),
         ],
         rowGroups: const [
-          SpecAxisGroup(title: 'NEUTRAL (4)', subs: [
-            'blackAlpha8', 'blackAlpha13', 'blackAlpha18', 'blackAlpha20',
-          ]),
-          SpecAxisGroup(title: 'PRIMARY (4)', subs: [
-            'primary05Alpha20', 'primary04Alpha18', 'primary05Alpha32', 'primary05Alpha40',
-          ]),
-          SpecAxisGroup(title: 'ERROR (4)', subs: [
-            'error04Alpha12', 'error04Alpha20', 'error04Alpha32', 'error04Alpha40',
+          SpecAxisGroup(title: 'NEUTRAL (2)', subs: [
+            'blackAlpha20', 'blackAlpha40',
           ]),
         ],
         cellBuilder: (r, c) {
@@ -2982,7 +2963,7 @@ class _AaBadge extends StatelessWidget {
   final bool pass;
   @override
   Widget build(BuildContext context) {
-    final bg = pass ? CpfSeguroColors.success07 : CpfSeguroColors.error04Alpha12;
+    final bg = pass ? CpfSeguroColors.success07 : CpfSeguroColors.error07;
     final fg = pass ? CpfSeguroColors.success04 : CpfSeguroColors.error04;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),

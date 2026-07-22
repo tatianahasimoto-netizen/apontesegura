@@ -1194,10 +1194,6 @@ class _ColorsSection extends StatelessWidget {
         ('primary-07', CpfSeguroColors.primary07),
         ('primary-08', CpfSeguroColors.primary08),
         ('primary-09', CpfSeguroColors.primary09),
-        ('primary04Alpha18', CpfSeguroColors.primary04Alpha18),
-        ('primary05Alpha20', CpfSeguroColors.primary05Alpha20),
-        ('primary05Alpha32', CpfSeguroColors.primary05Alpha32),
-        ('primary05Alpha40', CpfSeguroColors.primary05Alpha40),
       ]
     ),
     (
@@ -1215,18 +1211,8 @@ class _ColorsSection extends StatelessWidget {
         ('neutral-10', CpfSeguroColors.neutral10),
         ('white', CpfSeguroColors.white),
         ('black', CpfSeguroColors.black),
-        ('neutral10Alpha70', CpfSeguroColors.neutral10Alpha70),
-        ('whiteAlpha24', CpfSeguroColors.whiteAlpha24),
-        ('whiteAlpha32', CpfSeguroColors.whiteAlpha32),
-        ('whiteAlpha38', CpfSeguroColors.whiteAlpha38),
-        ('whiteAlpha80', CpfSeguroColors.whiteAlpha80),
-        ('blackAlpha8', CpfSeguroColors.blackAlpha8),
-        ('blackAlpha13', CpfSeguroColors.blackAlpha13),
-        ('blackAlpha18', CpfSeguroColors.blackAlpha18),
         ('blackAlpha20', CpfSeguroColors.blackAlpha20),
         ('blackAlpha40', CpfSeguroColors.blackAlpha40),
-        ('blackAlpha85', CpfSeguroColors.blackAlpha85),
-        ('cardDark', CpfSeguroColors.cardDark),
         ('transparent', CpfSeguroColors.transparent),
       ]
     ),
@@ -1240,12 +1226,6 @@ class _ColorsSection extends StatelessWidget {
         ('error-05', CpfSeguroColors.error05),
         ('error-06', CpfSeguroColors.error06),
         ('error-07', CpfSeguroColors.error07),
-        ('error04Alpha12', CpfSeguroColors.error04Alpha12),
-        ('error04Alpha20', CpfSeguroColors.error04Alpha20),
-        ('error04Alpha32', CpfSeguroColors.error04Alpha32),
-        ('error04Alpha40', CpfSeguroColors.error04Alpha40),
-        ('error07Alpha70', CpfSeguroColors.error07Alpha70),
-        ('errorBanner', CpfSeguroColors.errorBanner),
       ]
     ),
     (
@@ -1271,7 +1251,6 @@ class _ColorsSection extends StatelessWidget {
         ('warning-05', CpfSeguroColors.warning05),
         ('warning-06', CpfSeguroColors.warning06),
         ('warning-07', CpfSeguroColors.warning07),
-        ('warning07Alpha70', CpfSeguroColors.warning07Alpha70),
       ]
     ),
   ];
@@ -2841,21 +2820,8 @@ class _ShadowsSection extends StatelessWidget {
   const _ShadowsSection();
 
   static const _shadows = <(String, Color, Offset, double, String)>[
-    // Neutral (preto/cinza)
-    ('blackAlpha8', CpfSeguroColors.blackAlpha8, Offset(0, 4), 10, 'toast'),
-    ('blackAlpha13', CpfSeguroColors.blackAlpha13, Offset(5, 4), 20, 'card / bottomnav'),
-    ('blackAlpha18', CpfSeguroColors.blackAlpha18, Offset(0, 1), 0, 'numpad key'),
-    ('blackAlpha20', CpfSeguroColors.blackAlpha20, Offset(0, 4), 10, 'tooltip'),
-    // Primary (azul brand)
-    ('primary05Alpha20', CpfSeguroColors.primary05Alpha20, Offset(0, 4), 10, 'nav lift'),
-    ('primary04Alpha18', CpfSeguroColors.primary04Alpha18, Offset(0, 2), 8, 'chat button'),
-    ('primary05Alpha32', CpfSeguroColors.primary05Alpha32, Offset(0, 12), 40, 'completion card'),
-    ('primary05Alpha40', CpfSeguroColors.primary05Alpha40, Offset(2, 8), 20, 'banner drop'),
-    // Error (vermelho) — pro backoffice / CTAs destrutivos
-    ('error04Alpha12', CpfSeguroColors.error04Alpha12, Offset(0, 4), 10, 'error toast'),
-    ('error04Alpha20', CpfSeguroColors.error04Alpha20, Offset(0, 4), 12, 'delete btn'),
-    ('error04Alpha32', CpfSeguroColors.error04Alpha32, Offset(0, 8), 20, 'destructive card'),
-    ('error04Alpha40', CpfSeguroColors.error04Alpha40, Offset(2, 8), 24, 'danger banner'),
+    ('blackAlpha20', CpfSeguroColors.blackAlpha20, Offset(0, 4), 10, 'tooltip, gap marker'),
+    ('blackAlpha40', CpfSeguroColors.blackAlpha40, Offset(0, 4), 12, 'sheet scrim, biometria overlay'),
   ];
 
   @override

@@ -29,9 +29,9 @@ class CpfSeguroNavItem {
 /// CPF SEGURO — BottomNav.
 ///
 /// Barra de navegação inferior com 4 tabs. Spec: altura visual 110 (min),
-/// glass padrão do app + stroke white 1px + shadow blackAlpha13. O círculo
-/// do item ativo (primary-04, dropshadow primary@18) ESTOURA a borda
-/// superior da barra; o label fica a 8px do círculo. Item CPF SEGURO
+/// glass padrão do app + stroke white 1px + shadow Elevation.medium. O
+/// círculo do item ativo (primary-04, shadow Elevation.brandSoft) ESTOURA
+/// a borda superior da barra; o label fica a 8px do círculo. Item CPF SEGURO
 /// aceita [pauseActive=true] pra mostrar dot vermelho.
 ///
 /// ```dart
@@ -118,7 +118,7 @@ class CpfSeguroNav extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           // ── Barra glass (spec: 110 visual · white80+blur10 · stroke white
-          // 1px · shadow blackAlpha13 fora do clip) com o CONTEÚDO dentro —
+          // 1px · shadow Elevation.medium fora do clip) com o CONTEÚDO dentro —
           // é o conteúdo que dá corpo pro BackdropFilter renderizar.
           Padding(
             padding: const EdgeInsets.only(top: headroom),

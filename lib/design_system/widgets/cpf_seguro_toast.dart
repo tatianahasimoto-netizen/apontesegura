@@ -122,7 +122,7 @@ class _ToastConfig {
 
 _ToastConfig _toastConfig(CpfSeguroToastState s) => switch (s) {
       CpfSeguroToastState.normal => const _ToastConfig(
-          bg: CpfSeguroColors.neutral10Alpha70,
+          bg: CpfSeguroColors.commonBg,
           border: CpfSeguroColors.neutral08,
           iconState: CpfSeguroSpotState.normal,
           defaultIcon: 'hand-wave-light',
@@ -134,13 +134,13 @@ _ToastConfig _toastConfig(CpfSeguroToastState s) => switch (s) {
           defaultIcon: 'check-light',
         ),
       CpfSeguroToastState.error => const _ToastConfig(
-          bg: CpfSeguroColors.error07Alpha70,
+          bg: CpfSeguroColors.error07,
           border: CpfSeguroColors.error06,
           iconState: CpfSeguroSpotState.error,
           defaultIcon: 'xmark-light',
         ),
       CpfSeguroToastState.warning => const _ToastConfig(
-          bg: CpfSeguroColors.warning07Alpha70,
+          bg: CpfSeguroColors.warning07,
           border: CpfSeguroColors.warning06,
           iconState: CpfSeguroSpotState.warning,
           defaultIcon: 'triangle-exclamation-light',

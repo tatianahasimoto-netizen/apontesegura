@@ -63,7 +63,7 @@ class _CpsBiometriaOverlayState extends State<CpfSeguroBiometriaOverlay> {
           explicitChildNodes: true,
           label: 'Autenticação biométrica',
           child: ColoredBox(
-            color: CpfSeguroColors.blackAlpha85,
+            color: CpfSeguroColors.blackAlpha40,
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,

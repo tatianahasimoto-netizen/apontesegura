@@ -34,5 +34,5 @@ class _GapMarker extends StatelessWidget {
   const _GapMarker({required this.vertical});
   final bool vertical;
   @override
-  Widget build(BuildContext context) => const ColoredBox(color: CpfSeguroColors.primary04Alpha18);
+  Widget build(BuildContext context) => const ColoredBox(color: CpfSeguroColors.blackAlpha20);
 }

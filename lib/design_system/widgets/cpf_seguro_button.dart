@@ -61,8 +61,9 @@ class CpfSeguroButton extends StatefulWidget {
   });
 
   /// Variante "chat" — usada quando o botão fica flutuando dentro do chat.
-  /// Aplica shadow `primary04Alpha18` + radius 24 (não-pill). Substitui o
-  /// antigo `CpfSeguroChatButton` (consolidado como variante deste widget).
+  /// Aplica shadow `CpfSeguroElevation.brandLow` + radius 24 (não-pill).
+  /// Substitui o antigo `CpfSeguroChatButton` (consolidado como variante
+  /// deste widget).
   ///
   /// ```dart
   /// CpfSeguroButton.chatLift(label: 'Abrir termos', onPressed: openTerms)

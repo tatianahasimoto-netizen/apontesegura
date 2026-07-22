@@ -11,6 +11,14 @@ class CpfSeguroColors {
   CpfSeguroColors._();
 
   // ═══════════════════════════════════════════════════════════════════════
+  // COMMON (A Ponte — Common/FG e Common/BG são distintos de Neutral/White)
+  // ═══════════════════════════════════════════════════════════════════════
+
+  static const Color commonFg = Color(CpfSeguroColorConsts.commonFg);
+  static const Color commonBg = Color(CpfSeguroColorConsts.commonBg);
+  static const Color commonBgMenu = Color(CpfSeguroColorConsts.commonBgMenu);
+
+  // ═══════════════════════════════════════════════════════════════════════
   // PRIMARY (brand blue) + alphas
   // ═══════════════════════════════════════════════════════════════════════
 
@@ -39,18 +47,6 @@ class CpfSeguroColors {
   static const Color primaryStateHover = Color(CpfSeguroColorConsts.primaryStateHover);
   static const Color brandOnPrimary = Color(CpfSeguroColorConsts.onPrimary);
 
-  /// primary-04 @ 18% — chat button drop shadow.
-  static const Color primary04Alpha18 = Color(0x2E003BE0);
-
-  /// primary-05 @ 20% — bottom nav item ativo (lift shadow).
-  static const Color primary05Alpha20 = Color(0x333369FF);
-
-  /// primary-05 @ 32% — chat completion card drop shadow.
-  static const Color primary05Alpha32 = Color(0x522157EF);
-
-  /// primary-05 @ 40% — banner drop shadow.
-  static const Color primary05Alpha40 = Color(0x662157EF);
-
   // ═══════════════════════════════════════════════════════════════════════
   // NEUTRAL (gray) + alphas de white e black
   // ═══════════════════════════════════════════════════════════════════════
@@ -72,41 +68,14 @@ class CpfSeguroColors {
   static const Color white = Color(CpfSeguroColorConsts.white);
   static const Color black = Color(CpfSeguroColorConsts.black);
 
-  /// neutral-10 @ 70% — bg do toast normal (glass tint).
-  static const Color neutral10Alpha70 = Color(0xB3F6F6F6);
-
-  /// white @ 24% — banner chip bg (sobre gradient primary).
-  static const Color whiteAlpha24 = Color(0x3DFFFFFF);
-
-  /// white @ 32% — banner divider tracejado.
-  static const Color whiteAlpha32 = Color(0x52FFFFFF);
-
-  /// white @ 38% — banner chip border, completion dot inativo.
-  static const Color whiteAlpha38 = Color(0x61FFFFFF);
-
-  /// white @ 80% — glass surface (TopAppBar, BottomNav, Toast, sticky bars).
-  static const Color whiteAlpha80 = Color(0xCCFFFFFF);
-
   /// white @ 90% — véu de sheet/scrim claro.
   static const Color whiteAlpha90 = Color(0xE6FFFFFF);
 
-  /// black @ 8% — toast drop shadow.
-  static const Color blackAlpha8 = Color(0x14000000);
-
-  /// black @ 13% — card / bottom nav / bottomchatbar drop shadow.
-  static const Color blackAlpha13 = Color(0x21000000);
-
-  /// black @ 18% — numpad key press shadow.
-  static const Color blackAlpha18 = Color(0x2D000000);
-
-  /// black @ 20% — tooltip drop shadow.
+  /// black @ 20% — tooltip drop shadow, gap marker (dev mode).
   static const Color blackAlpha20 = Color(0x33000000);
 
-  /// black @ 40% — scrim padrão de bottomsheet.
+  /// black @ 40% — scrim padrão de bottomsheet, overlay de biometria.
   static const Color blackAlpha40 = Color(0x66000000);
-
-  /// black @ 85% — full-screen overlay (biometria).
-  static const Color blackAlpha85 = Color(0xD9000000);
 
   /// slate #101828 @ 10% / @ 6% — sombra do knob do ToggleSwitch (padrão iOS,
   /// 2 camadas). Cor levemente navy em vez de preto puro.
@@ -125,29 +94,6 @@ class CpfSeguroColors {
   static const Color error06 = Color(CpfSeguroColorConsts.error06);
   static const Color error07 = Color(CpfSeguroColorConsts.error07);
 
-  /// Painel de erro sobre o gradient azul do StatusBanner (React #A23737).
-  /// Vermelho dessaturado — o error-04 puro vibra demais sobre o brand.
-  static const Color errorBanner = Color(0xFFA23737);
-
-  /// Bg do cartão físico do parceiro na Carteira (Figma #272727).
-  /// Mais frio que o neutral-01 — específico do WalletCard.partner.
-  static const Color cardDark = Color(0xFF272727);
-
-  /// error-04 @ 12% — error toast shadow.
-  static const Color error04Alpha12 = Color(0x1FF04438);
-
-  /// error-04 @ 20% — delete button shadow (back office).
-  static const Color error04Alpha20 = Color(0x33F04438);
-
-  /// error-04 @ 32% — destructive card shadow.
-  static const Color error04Alpha32 = Color(0x52F04438);
-
-  /// error-04 @ 40% — danger banner shadow.
-  static const Color error04Alpha40 = Color(0x66F04438);
-
-  /// error-07 @ 70% — bg do toast error (glass tint).
-  static const Color error07Alpha70 = Color(0xB3FEF3F2);
-
   // ═══════════════════════════════════════════════════════════════════════
   // WARNING (amber) + alphas
   // ═══════════════════════════════════════════════════════════════════════
@@ -159,9 +105,6 @@ class CpfSeguroColors {
   static const Color warning05 = Color(CpfSeguroColorConsts.warning05);
   static const Color warning06 = Color(CpfSeguroColorConsts.warning06);
   static const Color warning07 = Color(CpfSeguroColorConsts.warning07);
-
-  /// warning-07 @ 70% — bg do toast warning (glass tint).
-  static const Color warning07Alpha70 = Color(0xB3FEF4E6);
 
   // ═══════════════════════════════════════════════════════════════════════
   // SUCCESS (green) + alphas
@@ -188,7 +131,7 @@ class CpfSeguroColors {
 
   // ═══════════════════════════════════════════════════════════════════════
   // TRANSPARENT (só o essencial — não precisa "overlayDark", "scrim" etc.
-  // Esses estão sob NEUTRAL como blackAlpha40/85)
+  // Esses estão sob NEUTRAL como blackAlpha40)
   // ═══════════════════════════════════════════════════════════════════════
 
   static const Color transparent = Color(0x00000000);

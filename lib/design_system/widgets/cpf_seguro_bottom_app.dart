@@ -86,7 +86,7 @@ class CpfSeguroBottomApp extends StatelessWidget {
   // Constantes de altura por variante (compat com callers legados).
   static const double heightDefault = 34;
   // Nav = 16 headroom (estouro do ativo) + 76 row + 34 indicator.
-  // Barra VISUAL = 110 (spec): glass + stroke white + shadow blackAlpha13.
+  // Barra VISUAL = 110 (spec): glass + stroke white + shadow Elevation.medium.
   static const double heightNav = 126;
   static const double heightButton1 = 122;
   static const double heightButton2 = 190;
