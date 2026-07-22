@@ -1,0 +1,12 @@
+{
+  "name": "apontesegura-ds-tokens",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline de design tokens (DTCG) -> Dart + CSS via Style Dictionary, adaptado do cpf-seguro-ds com os tokens do A Ponte Design System (Figma). Não faz parte do build Flutter/Vercel; roda em dev/CI.",
+  "scripts": {
+    "tokens": "style-dictionary build --config sd.config.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

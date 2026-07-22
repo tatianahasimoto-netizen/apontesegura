@@ -1,0 +1,42 @@
+name: cpf_seguro_design_system
+description: Design System "A Ponte" — adaptado a partir da arquitetura do cpf-seguro-ds, com tokens, roles semânticos, gramática (Surface) e widgets Flutter. Consumível como package + catálogo Flutter Web. (TODO: renomear pacote/prefixo Dart de cpf_seguro_* para o nome final do projeto — ver TOKENS_MAPPING.md)
+version: 0.1.0
+publish_to: none
+repository: git@github.com:tatianahasimoto-netizen/apontesegura.git
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.0.10
+  vector_graphics: ^1.2.2
+  web: ^1.0.0
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+  vector_graphics_compiler: ^1.2.6
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/logos/
+    - assets/illustrations/
+  fonts:
+    - family: SF Pro Rounded
+      fonts:
+        - asset: assets/fonts/SF-Pro-Rounded-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Rounded-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Rounded-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Rounded-Bold.otf
+          weight: 700
+        - asset: assets/fonts/SF-Pro-Rounded-Heavy.otf
+          weight: 800

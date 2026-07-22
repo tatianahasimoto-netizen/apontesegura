@@ -1,0 +1,291 @@
+{
+  "waitScreen": {
+    "$type": "string",
+    "$value": "timer_woman",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4033",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "success": {
+    "$type": "string",
+    "$value": "success-flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4034",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "securityPhone": {
+    "$type": "string",
+    "$value": "security_phone_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4035",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "search": {
+    "$type": "string",
+    "$value": "search_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4036",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "searchEgine": {
+    "$type": "string",
+    "$value": "search_engine_flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4037",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "searchComputer": {
+    "$type": "string",
+    "$value": "search-flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4038",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "genericError": {
+    "$type": "string",
+    "$value": "sad_face_flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4039",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "pix": {
+    "$type": "string",
+    "$value": "pix_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4040",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "pageNotFound": {
+    "$type": "string",
+    "$value": "page_not_found_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4041",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "onlinePayment": {
+    "$type": "string",
+    "$value": "online_payment_flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4050",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "noFiles": {
+    "$type": "string",
+    "$value": "no_files",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4053",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "errorPage": {
+    "$type": "string",
+    "$value": "no-files-flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4054",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "noData": {
+    "$type": "string",
+    "$value": "NO DATA",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4055",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "moneyJar": {
+    "$type": "string",
+    "$value": "money_jar_flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4056",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "errorFile": {
+    "$type": "string",
+    "$value": "invalable-file_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4057",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "noSignal": {
+    "$type": "string",
+    "$value": "internetf_off_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4068",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "graphics": {
+    "$type": "string",
+    "$value": "data_analysis_flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4069",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "blockedInBrazil": {
+    "$type": "string",
+    "$value": "invaleble_state_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4070",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "celebration": {
+    "$type": "string",
+    "$value": "success-flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4071",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "filesSearch": {
+    "$type": "string",
+    "$value": "files_search",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4072",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "security": {
+    "$type": "string",
+    "$value": "Key_word",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4089",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "fileNotFound": {
+    "$type": "string",
+    "$value": "file_not_found_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4090",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "errorSearch": {
+    "$type": "string",
+    "$value": "error_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4091",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "dataAnalysis": {
+    "$type": "string",
+    "$value": "data_analysis_flatline",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4092",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "config": {
+    "$type": "string",
+    "$value": "config_flat",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4104",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "filesSearch 6": {
+    "$type": "string",
+    "$value": "files_search",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8350:4093",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Default"
+  }
+}

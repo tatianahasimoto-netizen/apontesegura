@@ -1,0 +1,72 @@
+{
+  "id": "onboarding-cadastro",
+  "title": "Onboarding · cadastro (chat)",
+  "subtitle": "CPF → dados → selfie → docs",
+  "lanes": ["CAMINHO FELIZ", "DESVIOS DO CPF"],
+  "source": {
+    "origin": "app real · design-hunter",
+    "files": [
+      "modules/onboarding/ui/view/onboarding/onboarding_page.dart",
+      "modules/onboarding/ui/controller/onboarding_controller.dart",
+      "modules/onboarding/ui/view/onboarding/terms_of_use_web_view_page.dart"
+    ],
+    "routes": {
+      "/onboarding/register": "chat",
+      "/onboarding/terms-of-use": "termos"
+    }
+  },
+  "nodes": [
+    { "id": "start", "kind": "start", "label": "abrir o cadastro", "lane": "CAMINHO FELIZ" },
+    { "id": "chat", "kind": "screen", "label": "Chat", "route": "/onboarding/register", "intent": "boas-vindas do assistente", "lane": "CAMINHO FELIZ" },
+    { "id": "rascunho", "kind": "decision", "label": "rascunho salvo?", "lane": "CAMINHO FELIZ" },
+    { "id": "restaurar", "kind": "screen", "label": "Continuar de onde parou?", "intent": "restaurar ou recomeçar", "tone": "state", "lane": "CAMINHO FELIZ" },
+    { "id": "cpf", "kind": "screen", "label": "CPF", "intent": "capturar e validar CPF", "data": ["cpf"], "componentHint": "ChatInput", "lane": "CAMINHO FELIZ" },
+    { "id": "nome", "kind": "screen", "label": "Nome completo", "intent": "capturar nome, erro inline", "data": ["nome"], "componentHint": "ChatInput", "lane": "CAMINHO FELIZ" },
+    { "id": "nomeSocial", "kind": "decision", "label": "nome social?", "lane": "CAMINHO FELIZ" },
+    { "id": "informarSocial", "kind": "screen", "label": "Informar nome social", "intent": "capturar nome social", "data": ["nomeSocial"], "componentHint": "ChatInput", "tone": "optional", "lane": "CAMINHO FELIZ" },
+    { "id": "nascimento", "kind": "screen", "label": "Data de nascimento", "intent": "capturar data, valida idade", "data": ["nascimento"], "componentHint": "ChatInput", "lane": "CAMINHO FELIZ" },
+    { "id": "termos", "kind": "screen", "label": "Termos de uso", "route": "/onboarding/terms-of-use", "intent": "aceite no fim do scroll", "componentHint": "WebView", "lane": "CAMINHO FELIZ" },
+    { "id": "telefone", "kind": "screen", "label": "Telefone", "intent": "capturar telefone, checa base", "data": ["telefone"], "componentHint": "ChatInput", "lane": "CAMINHO FELIZ" },
+    { "id": "sms", "kind": "screen", "label": "Código SMS", "intent": "confirmar OTP + reenviar", "data": ["otp"], "componentHint": "OtpInput", "lane": "CAMINHO FELIZ" },
+    { "id": "senha", "kind": "screen", "label": "Senha", "intent": "criar senha, regras vs data/CPF", "data": ["senha"], "componentHint": "ChatInput", "lane": "CAMINHO FELIZ" },
+    { "id": "confirmarSenha", "kind": "screen", "label": "Confirmar senha", "intent": "conferir com a anterior", "data": ["senha"], "componentHint": "ChatInput", "lane": "CAMINHO FELIZ" },
+    { "id": "revisao", "kind": "screen", "label": "Revisão dos dados", "intent": "confirmar ou editar por campo", "lane": "CAMINHO FELIZ" },
+    { "id": "salvando", "kind": "screen", "label": "Salvando cadastro", "intent": "loading, erro vira bolha", "tone": "state", "lane": "CAMINHO FELIZ" },
+    { "id": "selfie", "kind": "screen", "label": "Selfie (liveness)", "intent": "enviar agora ou depois", "lane": "CAMINHO FELIZ" },
+    { "id": "documento", "kind": "screen", "label": "Documento (photo ID)", "intent": "enviar agora ou depois", "lane": "CAMINHO FELIZ" },
+    { "id": "localizacao", "kind": "screen", "label": "Localização", "intent": "pedir permissão, pula se já concedida", "lane": "CAMINHO FELIZ" },
+    { "id": "contaCriada", "kind": "screen", "label": "Conta criada", "intent": "em análise + oferta de biometria", "lane": "CAMINHO FELIZ" },
+    { "id": "fimFeliz", "kind": "terminal", "label": "→ home loading", "tone": "terminal", "lane": "CAMINHO FELIZ" },
+
+    { "id": "cpfJa", "kind": "screen", "label": "CPF já cadastrado", "intent": "mensagem + redirect", "tone": "error", "lane": "DESVIOS DO CPF" },
+    { "id": "loginCpf", "kind": "terminal", "label": "→ /login", "tone": "terminal", "lane": "DESVIOS DO CPF" },
+    { "id": "whitelist", "kind": "screen", "label": "Fora da whitelist", "intent": "oferta de lista de espera", "tone": "empty", "lane": "DESVIOS DO CPF" }
+  ],
+  "edges": [
+    { "from": "start", "to": "chat" },
+    { "from": "chat", "to": "rascunho" },
+    { "from": "rascunho", "to": "restaurar", "label": "sim", "tone": "state" },
+    { "from": "rascunho", "to": "cpf", "label": "não" },
+    { "from": "restaurar", "to": "cpf" },
+    { "from": "cpf", "to": "nome", "label": "elegível" },
+    { "from": "cpf", "to": "cpfJa", "tone": "error" },
+    { "from": "cpf", "to": "whitelist", "tone": "empty" },
+    { "from": "cpfJa", "to": "loginCpf", "label": "3s", "tone": "terminal" },
+    { "from": "nome", "to": "nomeSocial" },
+    { "from": "nomeSocial", "to": "informarSocial", "label": "sim", "tone": "optional" },
+    { "from": "nomeSocial", "to": "nascimento", "label": "não" },
+    { "from": "informarSocial", "to": "nascimento" },
+    { "from": "nascimento", "to": "termos" },
+    { "from": "termos", "to": "telefone", "label": "li e concordo" },
+    { "from": "telefone", "to": "sms", "label": "envia SMS" },
+    { "from": "sms", "to": "senha", "label": "código válido" },
+    { "from": "senha", "to": "confirmarSenha" },
+    { "from": "confirmarSenha", "to": "revisao" },
+    { "from": "revisao", "to": "salvando", "label": "Tudo certo" },
+    { "from": "salvando", "to": "selfie", "label": "login automático" },
+    { "from": "selfie", "to": "documento", "label": "aprovada" },
+    { "from": "documento", "to": "localizacao", "label": "aprovado" },
+    { "from": "localizacao", "to": "contaCriada" },
+    { "from": "contaCriada", "to": "fimFeliz", "label": "ativar / depois", "tone": "terminal" }
+  ]
+}

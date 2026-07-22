@@ -1,0 +1,46 @@
+schema: spec-driven
+
+# Contexto do projeto (usado por /opsx:* ao criar artefatos)
+context: |
+  Projeto: CPF Seguro — Design System (cpf_seguro_design_system).
+  Repo: cpf-seguro-ds (GitHub huntercarmo-diletta/cpf-seguro-ds).
+
+  O que é: o DS da CPF Seguro em Flutter. Este repo é o CATÁLOGO (Flutter Web,
+  deploy Vercel em cpf-seguro-ds) + a superfície publicável do DS em
+  lib/design_system/ (widgets + tokens CpfSeguro*). O app real (cpf-seguro-real)
+  hoje consome o DS como fork manual; a meta é package + bridge de tokens.
+
+  Arquitetura (ler antes de implementar):
+  - DS_LANGUAGE.md — o DS como linguagem: tokens em 3 camadas (primitivo →
+    semântico/roles → componente), gramática (CpfSeguroSurface top/content/bottom
+    como primitivo, não raiz), multiplataforma (uma linguagem, bindings por
+    plataforma; web-nativo pro IB, não Flutter Web), robustez, fases L0-L4.
+  - DS_CONSOLIDATION_PLAN.md — adoção no app: package + bridge, roadmap F0-F4,
+    loop catálogo→app, captura de variações não mapeadas.
+
+  Camadas atômicas (catálogo): tokens, atoms, molecules, organisms.
+  Tokens: CpfSeguroPalette (primitivo), CpfSeguroScheme + CpfSeguroStatusTone
+  (semântico), CpfSeguroRadius, CpfSeguroSpacing, CpfSeguroElevation,
+  CpfSeguroGradients, CpfSeguroType, CpfSeguroIcons, CpfSeguroTheme.
+
+  Princípio: o significado é imposto pelos TOKENS SEMÂNTICOS + a API do
+  componente (recebe role/intent/tone/size, nunca cor crua) — a spec documenta e
+  verifica, não impõe. Componente nunca recebe cor/raio/spacing cru.
+
+  Documentação em português. Ao especificar um componente, referenciar a classe
+  real do DS (CpfSeguro*) e as variantes suportadas (nada inventado — mesma regra
+  do catálogo de Specs).
+
+# Per-artifact rules (optional)
+rules:
+  spec:
+    - Referenciar a classe real do DS (CpfSeguro*) e o token/role que ela consome
+    - Requirement em SHALL; Scenario em WHEN/THEN verificável (rg/grep quando aplicável)
+    - Não especificar variante que o widget não suporta
+  proposal:
+    - Escopo focado; listar o que NÃO entra
+    - Se muda contrato de componente, apontar impacto no catálogo (Specs) e no tracker (Integração)
+  design:
+    - Mapear token/role afetado e paridade mobile × web quando aplicável
+  tasks:
+    - Blocos de no máximo 2h, com checklist de validação (flutter build web, rg/grep)

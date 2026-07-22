@@ -1,0 +1,35 @@
+{
+  "Type": {
+    "$type": "string",
+    "$value": "Solid",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:8290:2385",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string"
+    }
+  },
+  "icons": {
+    "circle-minus": {
+      "$type": "string",
+      "$value": "circle-minus-solid",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8285:760",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.type": "string",
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f1d35d16e58914d4e16dcb6fef0cf565bea64c9d/-1:-1",
+          "targetVariableName": "circle-minus",
+          "targetVariableSetId": "VariableCollectionId:255b8d4e4e636e58fdcc71750285578b6f480a32/-1:-1",
+          "targetVariableSetName": "Icons"
+        }
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Solid"
+  }
+}
