@@ -1274,24 +1274,6 @@ class _ColorsSection extends StatelessWidget {
         ('warning07Alpha70', CpfSeguroColors.warning07Alpha70),
       ]
     ),
-    (
-      'SECURE (pausa é amarela)',
-      [
-        ('secure-03', CpfSeguroColors.secure03),
-        ('secure-04', CpfSeguroColors.secure04),
-        ('secure-05', CpfSeguroColors.secure05),
-        ('secure-07', CpfSeguroColors.secure07),
-        ('secure-08', CpfSeguroColors.secure08),
-        ('secure07Alpha38', CpfSeguroColors.secure07Alpha38),
-      ]
-    ),
-    (
-      'PARTNER (Aurora fictício)',
-      [
-        ('partner-primary', CpfSeguroColors.partnerPrimary),
-        ('partner-primary-hover', CpfSeguroColors.partnerPrimaryHover),
-      ]
-    ),
   ];
 
   // O que cada FAMÍLIA significa — derivado do uso real (o shade 01-09 é só
@@ -1299,11 +1281,9 @@ class _ColorsSection extends StatelessWidget {
   static const _familyMeaning = <String, String>{
     'PRIMARY': 'A marca. Ação primária, link, seleção, foco. O 04 (#003BE0) é o BRAND-PRINCIPAL; 08/09 = wash claro de fundo; os alphas viram glow e estado.',
     'NEUTRAL': 'Texto e superfície. 01-02 texto forte, 03-05 secundário/placeholder, 07-09 borda/divisor, 10 wash de fundo. Os alphas = scrim de modal e glass.',
-    'ERROR': 'Destrutivo. Toast e banner de erro, validação de campo, botão destrutivo. NÃO é usado pra pausa — isso é o secure.',
+    'ERROR': 'Destrutivo. Toast e banner de erro, validação de campo, botão destrutivo.',
     'SUCCESS': 'Confirmação. Status verificado, toast de sucesso, o check.',
     'WARNING': 'Atenção. Status pendente, aviso, a tag "Convite enviado".',
-    'SECURE (pausa é amarela)': 'Modo segurança / CPF pausado — o dourado que NÃO é vermelho (decisão do chefe: pausa nunca é vermelha).',
-    'PARTNER (Aurora fictício)': 'Cobranding do parceiro (laranja). Só aparece quando o parceiro embeda o SDK.',
   };
 
   @override
@@ -1352,8 +1332,6 @@ class _ColorsSection extends StatelessWidget {
             children: [
               for (final g in const <(String, Gradient, String)>[
                 ('brandLift', CpfSeguroGradients.brandLift, 'primary-05 → 03 · banner'),
-                ('screenBg', CpfSeguroGradients.screenBg, 'white → 08 · screen bg'),
-                ('cardPv', CpfSeguroGradients.cardPv, 'white → 09 · card Para Você'),
               ])
                 SizedBox(
                   width: 200,
@@ -2128,12 +2106,12 @@ class _StatusTagSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Section(
-      title: 'STATUSTAG · 6 tones',
+      title: 'STATUSTAG · 5 tones',
       specId: 'design-system-status-tag',
-      whenUse: 'para rotular um ESTADO semântico (Pago, Pendente, Erro, Seguro) '
+      whenUse: 'para rotular um ESTADO semântico (Pago, Pendente, Erro) '
           'numa linha ou card. O tone carrega o significado.',
       dos: const [
-        'tone casa com o significado (success/danger/warning/secure...).',
+        'tone casa com o significado (success/danger/warning...).',
         'Texto curto — o estado em 1-2 palavras.',
         'Deixe o ícone default do tone falar junto.',
       ],
@@ -2150,7 +2128,6 @@ class _StatusTagSection extends StatelessWidget {
         CpfSeguroStatusTag(label: 'primary', tone: CpfSeguroStatusTone.primary),
         CpfSeguroStatusTag(label: 'success', tone: CpfSeguroStatusTone.success),
         CpfSeguroStatusTag(label: 'danger', tone: CpfSeguroStatusTone.danger),
-        CpfSeguroStatusTag(label: 'secure', tone: CpfSeguroStatusTone.secure),
       ]),
     );
   }
@@ -2926,17 +2903,13 @@ class _GradientsSection extends StatelessWidget {
 
   static const _list = <(String, Gradient, String)>[
     ('brandLift',  CpfSeguroGradients.brandLift,
-        'primary-05 → primary-03 · banner, ChatCompletionCard'),
-    ('screenBg',   CpfSeguroGradients.screenBg,
-        'white → primary-08 · bg de screens (Welcome, ErrorFatal)'),
-    ('cardPv',     CpfSeguroGradients.cardPv,
-        'white → primary-09 · cards "Para Você" (quase invisível)'),
+        'primary-05 → primary-03 · banner'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return _Section(
-      title: 'GRADIENTS (degrades) · azul brand + screen wash + card sutil',
+      title: 'GRADIENTS (degrades) · azul brand',
       child: Wrap(
         spacing: 24,
         runSpacing: 24,

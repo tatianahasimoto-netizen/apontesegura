@@ -39,7 +39,8 @@ Confirme cada um no Figma antes de usar em produção:
 - `primary05, primary07, primary08, primary09, primaryStateSelected, primaryStateHover`
 - `secondary01, secondary02, secondary04, secondary05` (existem no Figma A Ponte, coleção `0.Theme/color/Secondary/*`, só não peguei o hex ainda)
 - `neutral05, neutral09` (muito provável que sejam iguais ao cpf-seguro-ds, dado o padrão acima, mas não confirmados)
-- Toda a família `warning*`, `success*`, `secure*`/`error01,02,03,05,06,07` — nenhum valor do A Ponte foi coletado para essas; os valores atuais são 100% herdados do cpf-seguro-ds
+- Toda a família `warning*`, `success*`, `error01,02,03,05,06,07` — nenhum valor do A Ponte foi coletado para essas; os valores atuais são 100% herdados do cpf-seguro-ds
+- ~~`secure*`~~ — removido do projeto (a pedido) junto com o role `secure`/`onSecure`/`secureSubtle`, o gradiente `screenBg`/`cardPv` e os componentes que dependiam disso. Já não é mais um TODO.
 - `roleDark.*` — nenhum dado de tema escuro do A Ponte foi coletado; os valores de dark mode continuam sendo os do cpf-seguro-ds
 - `Brand/Alpha 70`, `Brand/Gradient/Start`, `Brand/Gradient/End`, `Brand/State/Hover`, `Brand/State/Pressed` — variáveis existem no Figma, hex não coletado
 

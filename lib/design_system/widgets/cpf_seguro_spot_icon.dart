@@ -19,7 +19,6 @@ enum CpfSeguroSpotState {
   warning,
   success,
   loading,
-  secure,
 }
 
 class _SpotSpec {
@@ -42,7 +41,6 @@ _SpotSpec _resolveSpot(CpfSeguroSpotType type, CpfSeguroSpotState state, CpfSegu
       CpfSeguroSpotState.warning => const _SpotSpec(bg: CpfSeguroColors.warning04, iconColor: CpfSeguroColors.white),
       CpfSeguroSpotState.success => const _SpotSpec(bg: CpfSeguroColors.success04, iconColor: CpfSeguroColors.white),
       CpfSeguroSpotState.loading => _SpotSpec(bg: s.surfaceMuted, iconColor: s.textTertiary),
-      CpfSeguroSpotState.secure => const _SpotSpec(bg: CpfSeguroColors.secure04, iconColor: CpfSeguroColors.white),
     };
   }
   return switch (state) {
@@ -64,10 +62,6 @@ _SpotSpec _resolveSpot(CpfSeguroSpotType type, CpfSeguroSpotState state, CpfSegu
     CpfSeguroSpotState.loading => s.isDark
         ? _SpotSpec(bg: s.surfaceMuted, iconColor: s.primary)
         : const _SpotSpec(bg: CpfSeguroColors.primary07, border: CpfSeguroColors.neutral07, iconColor: CpfSeguroColors.primary04),
-    // Dark: creme (secure-08) vira tint dourado escuro; ícone clareia.
-    CpfSeguroSpotState.secure => s.isDark
-        ? _SpotSpec(bg: CpfSeguroColors.secure05.withValues(alpha: 0.18), iconColor: CpfSeguroColors.secure05)
-        : const _SpotSpec(bg: CpfSeguroColors.secure08, iconColor: CpfSeguroColors.secure03),
   };
 }
 

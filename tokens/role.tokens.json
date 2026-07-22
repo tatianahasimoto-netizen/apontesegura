@@ -31,12 +31,7 @@
     "warningSubtle": { "$value": "{color.warning07}" },
     "error": { "$value": "{color.error04}" },
     "onError": { "$value": "{color.white}" },
-    "errorSubtle": { "$value": "{color.error07}" },
-    "secure": { "$value": "{color.secure04}" },
-    "onSecure": { "$value": "{color.neutral01}" },
-    "secureSubtle": { "$value": "{color.secure08}" },
-    "partner": { "$value": "#E55A2B" },
-    "onPartner": { "$value": "#FFFFFF" }
+    "errorSubtle": { "$value": "{color.error07}" }
   },
   "roleDark": {
     "$type": "color",
@@ -70,11 +65,6 @@
     "warningSubtle": { "$value": "{color.warning02}" },
     "error": { "$value": "{color.error05}" },
     "onError": { "$value": "{color.error01}" },
-    "errorSubtle": { "$value": "{color.error02}" },
-    "secure": { "$value": "{color.secure05}" },
-    "onSecure": { "$value": "{color.secure03}" },
-    "secureSubtle": { "$value": "{color.secure02}" },
-    "partner": { "$value": "#E55A2B" },
-    "onPartner": { "$value": "#FFFFFF" }
+    "errorSubtle": { "$value": "{color.error02}" }
   }
 }

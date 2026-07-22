@@ -7,13 +7,12 @@ import 'cpf_seguro_icon.dart';
 // ═══════════════════════════════════════════════════════════════════════════
 
 /// Cor do dot (badge) no canto sup-direito do IconAccessory/SpotIcon.
-enum CpfSeguroBadge { none, primary, danger, secure }
+enum CpfSeguroBadge { none, primary, danger }
 
 Color? _badgeColor(CpfSeguroBadge b) => switch (b) {
       CpfSeguroBadge.none => null,
       CpfSeguroBadge.primary => CpfSeguroColors.primary04,
       CpfSeguroBadge.danger => CpfSeguroColors.error04,
-      CpfSeguroBadge.secure => CpfSeguroColors.secure04,
     };
 
 /// CPF SEGURO — IconAccessory (átomo STANDALONE).

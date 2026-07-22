@@ -988,7 +988,6 @@ class _RightIconAccessory extends CpfSeguroRightAccessory {
         CpfSeguroStatusTone.success => CpfSeguroColors.success04,
         CpfSeguroStatusTone.warning => CpfSeguroColors.warning04,
         CpfSeguroStatusTone.primary => CpfSeguroColors.primary04,
-        CpfSeguroStatusTone.secure => CpfSeguroColors.secure03,
         CpfSeguroStatusTone.neutral => CpfSeguroColors.neutral03,
       };
 

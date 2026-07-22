@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'cpf_seguro_colors.dart';
 import 'cpf_seguro_palette.dart';
 
 /// CPF SEGURO — Scheme (semântica / tier 2).
@@ -49,7 +48,7 @@ class CpfSeguroScheme {
     required this.secondary,
     required this.secondaryBorder,
     required this.secondarySubtle,
-    // Status — success / warning / error / secure (base + subtle bg)
+    // Status — success / warning / error (base + subtle bg)
     required this.success,
     required this.onSuccess,
     required this.successSubtle,
@@ -59,12 +58,6 @@ class CpfSeguroScheme {
     required this.error,
     required this.onError,
     required this.errorSubtle,
-    required this.secure,
-    required this.onSecure,
-    required this.secureSubtle,
-    // Partner (cobranding — mode-agnóstico)
-    required this.partner,
-    required this.onPartner,
   });
 
   final Brightness brightness;
@@ -109,10 +102,6 @@ class CpfSeguroScheme {
   final Color success, onSuccess, successSubtle;
   final Color warning, onWarning, warningSubtle;
   final Color error, onError, errorSubtle;
-  final Color secure, onSecure, secureSubtle;
-
-  /// Partner (cobranding) — cor do parceiro white-label. Mode-agnóstico.
-  final Color partner, onPartner;
 
   // ═══════════════════════════════════════════════════════════════════════
   // LIGHT — resolve o palette pro uso atual do DS (paridade 1:1 com o legado)
@@ -152,11 +141,6 @@ class CpfSeguroScheme {
         error: p.error04,
         onError: p.white,
         errorSubtle: p.error07,
-        secure: p.secure04,
-        onSecure: p.neutral01,
-        secureSubtle: p.secure08,
-        partner: CpfSeguroColors.partnerPrimary,
-        onPartner: CpfSeguroColors.partnerOnPrimary,
       );
 
   // ═══════════════════════════════════════════════════════════════════════
@@ -203,11 +187,6 @@ class CpfSeguroScheme {
         error: p.error05,
         onError: p.error01,
         errorSubtle: p.error02,
-        secure: p.secure05,
-        onSecure: p.secure03,
-        secureSubtle: p.secure02,
-        partner: CpfSeguroColors.partnerPrimary,
-        onPartner: CpfSeguroColors.partnerOnPrimary,
       );
 
   bool get isDark => brightness == Brightness.dark;

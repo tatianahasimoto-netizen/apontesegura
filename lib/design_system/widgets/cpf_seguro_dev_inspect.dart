@@ -51,8 +51,6 @@ String cpfSeguroColorToken(Color? c) {
     0xFFFEF3F2: 'error-07',
     0xFF12B76A: 'success-04',
     0xFFF79009: 'warning-04',
-    0xFFE5B73A: 'secure-04',
-    0xFFF5CC2C: 'secure-05',
     0xFF272727: 'cardDark',
     0xFFA23737: 'errorBanner',
   };

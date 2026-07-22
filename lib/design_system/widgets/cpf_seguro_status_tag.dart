@@ -8,7 +8,7 @@ import 'cpf_seguro_icon_accessory.dart' show CpfSeguroIconAccessory;
 import 'cpf_seguro_dev_inspect.dart';
 
 /// Tom semântico da StatusTag.
-enum CpfSeguroStatusTone { warning, neutral, primary, success, danger, secure }
+enum CpfSeguroStatusTone { warning, neutral, primary, success, danger }
 
 /// Data holder pra passar uma StatusTag como prop (ex.: slot right do AppList).
 class CpfSeguroStatusTagData {
@@ -105,7 +105,6 @@ _ToneSpec _toneSpec(CpfSeguroStatusTone t, CpfSeguroScheme s) {
       CpfSeguroStatusTone.primary => CpfSeguroColors.primary06,
       CpfSeguroStatusTone.success => s.success,
       CpfSeguroStatusTone.danger => s.error,
-      CpfSeguroStatusTone.secure => s.secure,
     };
     return _ToneSpec(
       bg: base.withValues(alpha: 0.16),
@@ -120,6 +119,5 @@ _ToneSpec _toneSpec(CpfSeguroStatusTone t, CpfSeguroScheme s) {
     CpfSeguroStatusTone.primary => const _ToneSpec(bg: CpfSeguroColors.primary08, border: CpfSeguroColors.primary04, color: CpfSeguroColors.primary04),
     CpfSeguroStatusTone.success => const _ToneSpec(bg: CpfSeguroColors.success07, border: CpfSeguroColors.success04, color: CpfSeguroColors.success04),
     CpfSeguroStatusTone.danger => const _ToneSpec(bg: CpfSeguroColors.error07, border: CpfSeguroColors.error04, color: CpfSeguroColors.error04),
-    CpfSeguroStatusTone.secure => const _ToneSpec(bg: CpfSeguroColors.secure08, border: CpfSeguroColors.secure03, color: CpfSeguroColors.secure03),
   };
 }

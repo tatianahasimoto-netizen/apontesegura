@@ -61,13 +61,6 @@
     "success04": { "$value": "#0E9154" },
     "success05": { "$value": "#13C873" },
     "success06": { "$value": "#B9F8DB" },
-    "success07": { "$value": "#F1FEF6" },
-
-    "secure02": { "$value": "#625500" },
-    "secure03": { "$value": "#DABD00" },
-    "secure04": { "$value": "#E5B73A" },
-    "secure05": { "$value": "#F5CC2C" },
-    "secure07": { "$value": "#FFF7D6" },
-    "secure08": { "$value": "#FFFADC" }
+    "success07": { "$value": "#F1FEF6" }
   }
 }

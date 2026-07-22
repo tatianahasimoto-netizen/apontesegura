@@ -8,20 +8,6 @@
         "stops": [0.0425, 0.8665],
         "colors": ["{color.primary03}", "{color.primary05}"]
       }
-    },
-    "screenBg": {
-      "$value": {
-        "begin": { "x": 0, "y": -1 },
-        "end": { "x": 0, "y": 1 },
-        "colors": ["{color.white}", "{color.primary08}"]
-      }
-    },
-    "cardPv": {
-      "$value": {
-        "begin": { "x": -0.62, "y": -0.78 },
-        "end": { "x": 0.62, "y": 0.78 },
-        "colors": ["{color.white}", "{color.primary09}"]
-      }
     }
   }
 }

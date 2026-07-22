@@ -61,12 +61,6 @@ void main() {
     'success05': p.success05.value,
     'success06': p.success06.value,
     'success07': p.success07.value,
-    'secure02': p.secure02.value,
-    'secure03': p.secure03.value,
-    'secure04': p.secure04.value,
-    'secure05': p.secure05.value,
-    'secure07': p.secure07.value,
-    'secure08': p.secure08.value,
     'secondary03': p.secondary03.value,
     'secondary06': p.secondary06.value,
     'secondary07': p.secondary07.value,
@@ -150,11 +144,6 @@ void main() {
       'error': s.error.value,
       'onError': s.onError.value,
       'errorSubtle': s.errorSubtle.value,
-      'secure': s.secure.value,
-      'onSecure': s.onSecure.value,
-      'secureSubtle': s.secureSubtle.value,
-      'partner': s.partner.value,
-      'onPartner': s.onPartner.value,
     };
     expect(cpfSeguroRoleLightTokensGen, equals(expectedRoles));
   });
@@ -193,11 +182,6 @@ void main() {
       'error': s.error.value,
       'onError': s.onError.value,
       'errorSubtle': s.errorSubtle.value,
-      'secure': s.secure.value,
-      'onSecure': s.onSecure.value,
-      'secureSubtle': s.secureSubtle.value,
-      'partner': s.partner.value,
-      'onPartner': s.onPartner.value,
     };
     expect(cpfSeguroRoleDarkTokensGen, equals(expectedRoles));
   });
@@ -239,10 +223,6 @@ void main() {
 
     check(CpfSeguroGradientConsts.brandLift, const Alignment(-0.5, -1),
         const Alignment(1, 0.5), const [0.0425, 0.8665], const [0xFF0468BF, 0xFF2861FF]);
-    check(CpfSeguroGradientConsts.screenBg, const Alignment(0, -1),
-        const Alignment(0, 1), null, const [0xFFFFFFFF, 0xFFF2F5FF]);
-    check(CpfSeguroGradientConsts.cardPv, const Alignment(-0.62, -0.78),
-        const Alignment(0.62, 0.78), null, const [0xFFFFFFFF, 0xFFF8FAFF]);
   });
 
   test('typography gerada (DTCG) == valores canônicos', () {

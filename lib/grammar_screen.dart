@@ -225,8 +225,8 @@ class _LayersFlow extends StatelessWidget {
         _LayerNode(
           layer: 'MOLÉCULA',
           example: 'AppList · InfoCard\nDetailRow',
-          bg: CpfSeguroColors.secure08,
-          fg: CpfSeguroColors.secure03,
+          bg: CpfSeguroColors.secondary07,
+          fg: CpfSeguroColors.secondary03,
         ),
         _Consome(),
         _LayerNode(
@@ -358,7 +358,7 @@ class _RegionDiagram extends StatelessWidget {
         SizedBox(height: 6),
         _RegionBox('CONTENT', 'slot rolável', CpfSeguroColors.neutral04, 180),
         SizedBox(height: 6),
-        _RegionBox('BOTTOM', 'Nav · Button · Keyboard · ChatInput', CpfSeguroColors.secure03, 72),
+        _RegionBox('BOTTOM', 'Nav · Button · Keyboard · ChatInput', CpfSeguroColors.secondary03, 72),
       ]),
     );
   }
@@ -540,7 +540,7 @@ class _RowGrammar extends StatelessWidget {
       Row(children: const [
         Expanded(flex: 2, child: _SlotBox('LEFT', 'spotIcon · avatar\niconAccessory · custom', CpfSeguroColors.primary04)),
         SizedBox(width: 8),
-        Expanded(flex: 4, child: _SlotBox('MIDDLE', 'title · titleSubtitle\nlabelTitleSubtitle · custom', CpfSeguroColors.secure03)),
+        Expanded(flex: 4, child: _SlotBox('MIDDLE', 'title · titleSubtitle\nlabelTitleSubtitle · custom', CpfSeguroColors.secondary03)),
         SizedBox(width: 8),
         Expanded(flex: 2, child: _SlotBox('RIGHT', 'action · icon · toggle\ncheckbox · amount', CpfSeguroColors.success04)),
       ]),

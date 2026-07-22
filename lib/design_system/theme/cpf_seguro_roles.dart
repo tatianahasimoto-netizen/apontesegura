@@ -12,8 +12,8 @@ import 'cpf_seguro_scheme.dart';
 /// `DS_LANGUAGE.md` §1.
 ///
 /// Aditivo: reusa os campos que o Scheme já expõe (primary/success/warning/
-/// error/secure + on/subtle). Não recria tokens.
-enum CpfSeguroRole { primary, neutral, success, warning, danger, secure }
+/// error + on/subtle). Não recria tokens.
+enum CpfSeguroRole { primary, neutral, success, warning, danger }
 
 /// Pacote resolvido de um role.
 class CpfSeguroRoleStyle {
@@ -50,10 +50,9 @@ abstract final class CpfSeguroRoles {
       CpfSeguroRole.success => (s.success, s.successSubtle, CpfSeguroIcons.circleCheckLight),
       CpfSeguroRole.warning => (s.warning, s.warningSubtle, CpfSeguroIcons.triangleExclamationLight),
       CpfSeguroRole.danger => (s.error, s.errorSubtle, CpfSeguroIcons.triangleExclamationLight),
-      CpfSeguroRole.secure => (s.secure, s.secureSubtle, CpfSeguroIcons.lockLight),
     };
     // On-color é propriedade do role: escolhe branco vs ink pelo maior contraste
-    // sobre o fill. Garante legibilidade mesmo em roles amarelos (warning/secure),
+    // sobre o fill. Garante legibilidade mesmo em roles amarelos (warning),
     // onde os on* do scheme não garantem AA sobre o sólido.
     return CpfSeguroRoleStyle(
       color: color,

@@ -438,7 +438,6 @@ class _SpotIconSpec extends StatelessWidget {
     ('warning', CpfSeguroSpotState.warning),
     ('success', CpfSeguroSpotState.success),
     ('loading', CpfSeguroSpotState.loading),
-    ('secure', CpfSeguroSpotState.secure),
   ];
 
   @override
@@ -446,13 +445,13 @@ class _SpotIconSpec extends StatelessWidget {
     return SpecSection(
       title: 'SpotIcon',
       composedOf: const ['IconAccessory', 'Color'],
-      subtitle: '2 types (fill · outline) × 8 states. Size default 34 (mobile), '
+      subtitle: '2 types (fill · outline) × 7 states. Size default 34 (mobile), '
           'icon escala pra ~58% do container. Badge é orthogonal — passe direto.',
       child: CpfSeguroSpecTable(
         cellWidth: 90,
         cellHeight: 76,
         columnGroups: const [
-          SpecAxisGroup(title: 'State', subs: ['normal', 'disabled', 'primary', 'error', 'warning', 'success', 'loading', 'secure']),
+          SpecAxisGroup(title: 'State', subs: ['normal', 'disabled', 'primary', 'error', 'warning', 'success', 'loading']),
         ],
         rowGroups: const [
           SpecAxisGroup(title: 'Type', subs: ['fill', 'outline']),
@@ -580,7 +579,6 @@ class _StatusTagSpec extends StatelessWidget {
     ('primary', CpfSeguroStatusTone.primary),
     ('success', CpfSeguroStatusTone.success),
     ('danger', CpfSeguroStatusTone.danger),
-    ('secure', CpfSeguroStatusTone.secure),
   ];
 
   @override
@@ -588,7 +586,7 @@ class _StatusTagSpec extends StatelessWidget {
     return SpecSection(
       title: 'StatusTag',
       composedOf: const ['IconAccessory', 'Color', 'Typography', 'Radius'],
-      subtitle: '6 tones × 2 (com/sem ícone à esquerda). Height fixo 20, '
+      subtitle: '5 tones × 2 (com/sem ícone à esquerda). Height fixo 20, '
           'border 0.5.',
       child: CpfSeguroSpecTable(
         cellWidth: 140,
@@ -597,7 +595,7 @@ class _StatusTagSpec extends StatelessWidget {
           SpecAxisGroup(title: 'Icon', subs: ['sem', 'com']),
         ],
         rowGroups: const [
-          SpecAxisGroup(title: 'Tone', subs: ['warning', 'neutral', 'primary', 'success', 'danger', 'secure']),
+          SpecAxisGroup(title: 'Tone', subs: ['warning', 'neutral', 'primary', 'success', 'danger']),
         ],
         cellBuilder: (r, c) {
           final tone = _tones[r].$2;
@@ -1536,19 +1534,7 @@ class _GradientTokensSpec extends StatelessWidget {
       'brandLift',
       CpfSeguroGradients.brandLift,
       'primary-05 → primary-03',
-      'banner "PARA VOCÊ", ChatCompletionCard',
-    ),
-    (
-      'screenBg',
-      CpfSeguroGradients.screenBg,
-      'white → primary-08',
-      'bg de screens full-height (Welcome, ErrorFatal, Journey)',
-    ),
-    (
-      'cardPv',
-      CpfSeguroGradients.cardPv,
-      'white → primary-09',
-      'cards "Para Você" (quase invisível, dá brilho sutil)',
+      'banner "PARA VOCÊ"',
     ),
   ];
 
@@ -1557,7 +1543,7 @@ class _GradientTokensSpec extends StatelessWidget {
     return SpecSection(
       title: 'Gradient tokens (degrades)',
       subtitle: 'Todo degrade do DS mora em CpfSeguroGradients. Paridade 1:1 '
-          'com o React (`--banner-gradient`, `--screen-bg`, `--card-pv-bg`). '
+          'com o React (`--banner-gradient`). '
           'Uso: `BoxDecoration(gradient: CpfSeguroGradients.brandLift)`. '
           'Se um contexto precisa de novo gradient, criar aqui ANTES de consumir.',
       child: CpfSeguroSpecTable(
@@ -1567,8 +1553,8 @@ class _GradientTokensSpec extends StatelessWidget {
           SpecAxisGroup(title: 'Preview', subs: ['·']),
         ],
         rowGroups: const [
-          SpecAxisGroup(title: 'DEGRADES (3)', subs: [
-            'brandLift', 'screenBg', 'cardPv',
+          SpecAxisGroup(title: 'DEGRADES (1)', subs: [
+            'brandLift',
           ]),
         ],
         cellBuilder: (r, c) {

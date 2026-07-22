@@ -226,7 +226,7 @@ enum _Status {
         _Status.tokenPort => (CpfSeguroColors.primary08, CpfSeguroColors.primary04),
         _Status.portedIdle => (CpfSeguroColors.warning07, CpfSeguroColors.warning04),
         _Status.diverging => (CpfSeguroColors.warning07, CpfSeguroColors.warning04),
-        _Status.playbookOnly => (CpfSeguroColors.secure08, CpfSeguroColors.secure03),
+        _Status.playbookOnly => (CpfSeguroColors.secondary07, CpfSeguroColors.secondary03),
         _Status.appOnly => (CpfSeguroColors.primary08, CpfSeguroColors.primary04),
         _Status.dsDefinition => (CpfSeguroColors.neutral09, CpfSeguroColors.neutral03),
         _Status.appDefinition => (CpfSeguroColors.neutral09, CpfSeguroColors.neutral03),
@@ -248,7 +248,7 @@ enum _Layer {
   (Color, Color) get style => switch (this) {
         _Layer.token => (CpfSeguroColors.neutral09, CpfSeguroColors.neutral04),
         _Layer.atom => (CpfSeguroColors.primary08, CpfSeguroColors.primary04),
-        _Layer.molecule => (CpfSeguroColors.secure08, CpfSeguroColors.secure03),
+        _Layer.molecule => (CpfSeguroColors.secondary07, CpfSeguroColors.secondary03),
         _Layer.organism => (CpfSeguroColors.success07, CpfSeguroColors.success04),
       };
 }
@@ -351,7 +351,6 @@ const _items = <_Item>[
   _Item('NavigationButton', _Status.playbookOnly, layer: _Layer.atom, ds: 'CpfSeguroNavigationButton', note: 'DIVERGENTE + colisão de nome: DS é pilha de CTAs full-width (footer de bottom-app); PixConfigMenuComponent é linha settings (título/subtítulo + chevron + divider) e está SEM call-site (código morto). Não é o mesmo word'),
   _Item('OfflinePill', _Status.dsDefinition, layer: _Layer.atom, ds: 'CpfSeguroOfflinePill', note: 'app não tem pill · perda de conexão vira página/sheet (ds.EmptyState wifi-light)'),
   _Item('PageTitle', _Status.used, layer: _Layer.molecule, ds: 'CpfSeguroPageTitle', app: 'ds.PageTitle (~20 telas)', note: 'decisão 07-21 (ds): sweep aplicado — ~19 blocos título(+subtítulo) abaixo-do-appbar (info pages, security, change-password, notifications, delete-profile, profile, charge) delegam ds.PageTitle. Excluídos heroes/appbar/bottom-sheets/empty-states'),
-  _Item('PartnerButton', _Status.dsDefinition, layer: _Layer.atom, ds: 'CpfSeguroPartnerButton'),
   _Item('PaymentSheet', _Status.dsDefinition, layer: _Layer.organism, ds: 'CpfSeguroPaymentSheet'),
   _Item('ProgressBar', _Status.used, layer: _Layer.atom, ds: 'CpfSeguroProgressBar', app: 'ds.ProgressBar.activity · .value', note: 'InstitutionProgressComponent (2fa) delega .activity. F2 (07-21): DS ganhou variante .value (progresso CONTÍNUO 0..1) — o LinearProgressIndicator cru do pix loading (spring no controller) agora delega .value. 0 LinearProgressIndicator cru restante. Stepper segmentado do onboarding segue bespoke'),
   _Item('ProgressRing', _Status.used, layer: _Layer.atom, ds: 'CpfSeguroProgressRing', app: 'ds via left.progressRing', note: 'anel de progresso circular + label · consumido por left.progressRing (sou_eu serviço)'),

@@ -57,12 +57,6 @@ const Map<String, int> cpfSeguroColorTokensGen = {
   'success05': 0xFF13C873,
   'success06': 0xFFB9F8DB,
   'success07': 0xFFF1FEF6,
-  'secure02': 0xFF625500,
-  'secure03': 0xFFDABD00,
-  'secure04': 0xFFE5B73A,
-  'secure05': 0xFFF5CC2C,
-  'secure07': 0xFFFFF7D6,
-  'secure08': 0xFFFFFADC,
 };
 
 abstract final class CpfSeguroColorConsts {
@@ -120,10 +114,4 @@ abstract final class CpfSeguroColorConsts {
   static const int success05 = 0xFF13C873;
   static const int success06 = 0xFFB9F8DB;
   static const int success07 = 0xFFF1FEF6;
-  static const int secure02 = 0xFF625500;
-  static const int secure03 = 0xFFDABD00;
-  static const int secure04 = 0xFFE5B73A;
-  static const int secure05 = 0xFFF5CC2C;
-  static const int secure07 = 0xFFFFF7D6;
-  static const int secure08 = 0xFFFFFADC;
 }

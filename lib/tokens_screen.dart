@@ -27,7 +27,6 @@ class CpfSchemeShowcase extends StatelessWidget {
     ('success', 'Base do status verificado / confirmado.'),
     ('warning', 'Base do status pendente / atenção.'),
     ('error', 'Base do erro / destrutivo.'),
-    ('secure', 'Base do modo segurança / CPF pausado (o dourado).'),
   ];
 
   @override
@@ -145,7 +144,6 @@ class _SchemePanel extends StatelessWidget {
                       _Dot(scheme.success),
                       _Dot(scheme.warning),
                       _Dot(scheme.error),
-                      _Dot(scheme.secure),
                     ],
                   ),
                 ],
@@ -181,7 +179,6 @@ class _SchemePanel extends StatelessWidget {
         ('success', s.success),
         ('warning', s.warning),
         ('error', s.error),
-        ('secure', s.secure),
       ];
 }
 

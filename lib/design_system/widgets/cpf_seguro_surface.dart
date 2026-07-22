@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import '../theme/cpf_seguro_gradients.dart';
 import '../theme/cpf_seguro_metrics.dart';
 import '../theme/cpf_seguro_theme.dart';
 
@@ -70,8 +69,7 @@ class CpfSeguroSurface extends StatelessWidget {
   /// Padding do content. Default: h s6 · v s4.
   final EdgeInsets? contentPadding;
 
-  /// Fundo. Default screen: gradient screenBg (light) / s.bg (dark).
-  /// Default sheet: s.surface.
+  /// Fundo. Default screen: s.bg. Default sheet: s.surface.
   final Decoration? background;
 
   final bool _sheet;
@@ -86,11 +84,7 @@ class CpfSeguroSurface extends StatelessWidget {
         );
 
     final decoration = background ??
-        (_sheet
-            ? BoxDecoration(color: s.surface)
-            : (s.isDark
-                ? BoxDecoration(color: s.bg)
-                : const BoxDecoration(gradient: CpfSeguroGradients.screenBg)));
+        BoxDecoration(color: _sheet ? s.surface : s.bg);
 
     final middle = scrollableContent
         ? SingleChildScrollView(padding: pad, child: content)

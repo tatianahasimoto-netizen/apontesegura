@@ -34,11 +34,6 @@ const Map<String, int> cpfSeguroRoleLightTokensGen = {
   'error': 0xFFF04438,
   'onError': 0xFFFFFFFF,
   'errorSubtle': 0xFFFEF3F2,
-  'secure': 0xFFE5B73A,
-  'onSecure': 0xFF3D3939,
-  'secureSubtle': 0xFFFFFADC,
-  'partner': 0xFFE55A2B,
-  'onPartner': 0xFFFFFFFF,
 };
 
 const Map<String, int> cpfSeguroRoleDarkTokensGen = {
@@ -73,9 +68,4 @@ const Map<String, int> cpfSeguroRoleDarkTokensGen = {
   'error': 0xFFFF7066,
   'onError': 0xFF510F0B,
   'errorSubtle': 0xFF7E1911,
-  'secure': 0xFFF5CC2C,
-  'onSecure': 0xFFDABD00,
-  'secureSubtle': 0xFF625500,
-  'partner': 0xFFE55A2B,
-  'onPartner': 0xFFFFFFFF,
 };

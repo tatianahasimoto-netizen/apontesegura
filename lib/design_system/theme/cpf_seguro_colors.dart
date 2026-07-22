@@ -179,29 +179,12 @@ class CpfSeguroColors {
   static const Color success07Alpha70 = Color(0xB3F1FEF6);
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SECURE mode (yellow) + alphas
+  // SECONDARY (A Ponte — acento usado em Card-Acordo / Status-tag)
   // ═══════════════════════════════════════════════════════════════════════
 
-  /// Boss especificou: pausa NUNCA é vermelha; é amarelo.
-  /// secure02 = dourado escuro sólido p/ o subtle bg do dark (par do
-  /// warning02/error02). Derivado do 03 escurecido.
-  static const Color secure02 = Color(CpfSeguroColorConsts.secure02);
-  static const Color secure03 = Color(CpfSeguroColorConsts.secure03);
-  static const Color secure04 = Color(CpfSeguroColorConsts.secure04);
-  static const Color secure05 = Color(CpfSeguroColorConsts.secure05);
-  static const Color secure07 = Color(CpfSeguroColorConsts.secure07);
-  static const Color secure08 = Color(CpfSeguroColorConsts.secure08);
-
-  /// secure-07 @ 38% — border amarelo pálido do chip de pausa no banner.
-  static const Color secure07Alpha38 = Color(0x61FFFDD6);
-
-  // ═══════════════════════════════════════════════════════════════════════
-  // PARTNER (Aurora fictício)
-  // ═══════════════════════════════════════════════════════════════════════
-
-  static const Color partnerPrimary = Color(0xFFE55A2B);
-  static const Color partnerPrimaryHover = Color(0xFFCC4D24);
-  static const Color partnerOnPrimary = Color(0xFFFFFFFF);
+  static const Color secondary03 = Color(CpfSeguroColorConsts.secondary03);
+  static const Color secondary06 = Color(CpfSeguroColorConsts.secondary06);
+  static const Color secondary07 = Color(CpfSeguroColorConsts.secondary07);
 
   // ═══════════════════════════════════════════════════════════════════════
   // TRANSPARENT (só o essencial — não precisa "overlayDark", "scrim" etc.

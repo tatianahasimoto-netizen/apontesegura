@@ -68,13 +68,6 @@ class CpfSeguroPalette {
     required this.success05,
     required this.success06,
     required this.success07,
-    // Secure (modo segurança — sempre amarelo, nunca vermelho)
-    required this.secure02,
-    required this.secure03,
-    required this.secure04,
-    required this.secure05,
-    required this.secure07,
-    required this.secure08,
     // Secondary (A Ponte — família de acento que o cpf-seguro-ds não tinha)
     required this.secondary03,
     required this.secondary06,
@@ -101,7 +94,6 @@ class CpfSeguroPalette {
   final Color error01, error02, error03, error04, error05, error06, error07;
   final Color warning01, warning02, warning03, warning04, warning05, warning06, warning07;
   final Color success01, success02, success03, success04, success05, success06, success07;
-  final Color secure02, secure03, secure04, secure05, secure07, secure08;
 
   final Color secondary03, secondary06, secondary07;
   final Color commonFg, commonBg, commonBgMenu;
@@ -160,12 +152,6 @@ class CpfSeguroPalette {
     success05: Color(CpfSeguroColorConsts.success05),
     success06: Color(CpfSeguroColorConsts.success06),
     success07: Color(CpfSeguroColorConsts.success07),
-    secure02: Color(CpfSeguroColorConsts.secure02),
-    secure03: Color(CpfSeguroColorConsts.secure03),
-    secure04: Color(CpfSeguroColorConsts.secure04),
-    secure05: Color(CpfSeguroColorConsts.secure05),
-    secure07: Color(CpfSeguroColorConsts.secure07),
-    secure08: Color(CpfSeguroColorConsts.secure08),
     secondary03: Color(CpfSeguroColorConsts.secondary03),
     secondary06: Color(CpfSeguroColorConsts.secondary06),
     secondary07: Color(CpfSeguroColorConsts.secondary07),
