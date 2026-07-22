@@ -43,6 +43,16 @@ Confirme cada um no Figma antes de usar em produção:
 - `roleDark.*` — nenhum dado de tema escuro do A Ponte foi coletado; os valores de dark mode continuam sendo os do cpf-seguro-ds
 - `Brand/Alpha 70`, `Brand/Gradient/Start`, `Brand/Gradient/End`, `Brand/State/Hover`, `Brand/State/Pressed` — variáveis existem no Figma, hex não coletado
 
+**Por que ainda não peguei esses valores:** a ferramenta que uso para ler o Figma só
+resolve o hex de uma variável a partir de um nó que a *usa de fato* (uma tela/componente
+que aplica aquela cor). Para as variáveis acima eu não encontrei ainda uma tela/frame no
+arquivo do fluxo do app ou do DS que as use visivelmente. Listar todas as páginas do
+arquivo também não funciona de forma confiável pela API — só enxergo as páginas que já
+estão carregadas no Figma Desktop. Se você quiser fechar isso mais rápido, a forma mais
+direta é: abrir no Figma Desktop a página/tela que usa essas cores (ex: telas de sucesso,
+erro, aviso, ou a página de paleta/cores do DS) e me mandar o link com `node-id` dela —
+com isso eu consigo puxar o valor exato na próxima rodada.
+
 ## Pendência maior: tipografia usa DUAS famílias de fonte, não uma
 
 O cpf-seguro-ds aplica uma única família (**SF Pro Rounded**) globalmente no wrapper
@@ -52,10 +62,21 @@ locais em `assets/fonts/`. O A Ponte usa **duas famílias**:
 - `Headline/*` e `Display/*` → **Poppins** (peso SemiBold)
 - `Title/*`, `Label/*`, `Body/*` → **Roboto Flex**
 
-Isso não foi mudado automaticamente porque exige: (1) baixar/licenciar os arquivos de
-fonte Poppins e Roboto Flex, (2) registrá-los em `pubspec.yaml`, e (3) editar o wrapper
-Dart de tipografia para aplicar a família certa por estilo em vez de uma família única.
-Ficou como próximo passo manual.
+**Atualização:** o código já está preparado para isso — `CpfSeguroFonts.familyPoppins`
+e `CpfSeguroFonts.familyRobotoFlex` existem, e `CpfSeguroType` já aplica
+`.copyWith(fontFamily: ...)` correto por estilo (display/headline → Poppins;
+title/label/body → Roboto Flex). O que falta é só **binário**: baixar/licenciar os
+arquivos `.ttf`/`.otf` do Poppins SemiBold e Roboto Flex (Regular/Medium), colocar em
+`assets/fonts/` e descomentar o bloco de exemplo já deixado em `pubspec.yaml` (seção
+`flutter: fonts:`). Até lá, o Flutter usa o fallback do sistema silenciosamente — não
+quebra o build, só não mostra a fonte certa.
+
+## Bug corrigido: pubspec.yaml quebrado
+
+O primeiro commit tinha um `description:` com dois-pontos sem aspas, o que invalida o
+YAML (`flutter pub get` falhava, e portanto o build do Vercel também). Corrigido no
+commit seguinte com um bloco de string multi-linha (`>-`). Se algum build antigo do
+Vercel aparecer como falho, é esse commit específico — o próximo já resolve.
 
 ## Também não renomeado (proposital)
 
