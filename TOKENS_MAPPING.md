@@ -63,20 +63,34 @@ locais em `assets/fonts/`. O A Ponte usa **duas famílias**:
 - `Title/*`, `Label/*`, `Body/*` → **Roboto Flex**
 
 **Atualização:** o código já está preparado para isso — `CpfSeguroFonts.familyPoppins`
-e `CpfSeguroFonts.familyRobotoFlex` existem, e `CpfSeguroType` já aplica
-`.copyWith(fontFamily: ...)` correto por estilo (display/headline → Poppins;
-title/label/body → Roboto Flex). O que falta é só **binário**: baixar/licenciar os
+e `CpfSeguroFonts.familyRobotoFlex` existem, e cada estilo de `CpfSeguroType` já é um
+`const TextStyle(...)` literal com o `fontFamily` certo (display/headline → Poppins;
+title/label/body → Roboto Flex). Importante: são literais `const`, não
+`.copyWith(...)` em cima do gerado — `lib/main.dart` referencia esses campos dentro de
+coleções `const`, e `.copyWith` não é const, o que quebrava o build (ver seção de
+deploy abaixo). O que falta é só **binário**: baixar/licenciar os
 arquivos `.ttf`/`.otf` do Poppins SemiBold e Roboto Flex (Regular/Medium), colocar em
 `assets/fonts/` e descomentar o bloco de exemplo já deixado em `pubspec.yaml` (seção
 `flutter: fonts:`). Até lá, o Flutter usa o fallback do sistema silenciosamente — não
 quebra o build, só não mostra a fonte certa.
 
-## Bug corrigido: pubspec.yaml quebrado
+## Bugs de deploy corrigidos (Vercel)
 
-O primeiro commit tinha um `description:` com dois-pontos sem aspas, o que invalida o
-YAML (`flutter pub get` falhava, e portanto o build do Vercel também). Corrigido no
-commit seguinte com um bloco de string multi-linha (`>-`). Se algum build antigo do
-Vercel aparecer como falho, é esse commit específico — o próximo já resolve.
+Três problemas apareceram nos primeiros builds no Vercel, todos já corrigidos:
+
+1. **`pubspec.yaml` inválido** — `description:` tinha dois-pontos sem aspas, invalidando
+   o YAML (`flutter pub get` falhava). Corrigido com string multi-linha (`>-`).
+2. **`vercel.json` `buildCommand` estourando o limite de 256 caracteres** da Vercel
+   (o comando inline tinha 424). Movido para `vercel-build.sh`, com `buildCommand`
+   agora só `bash vercel-build.sh`.
+3. **Build do Flutter Web quebrado por `const` inválido** — ao aplicar `fontFamily` via
+   `.copyWith(...)` nos estilos de `CpfSeguroType` (ver seção anterior), `dart2js`
+   falhava porque `lib/main.dart` usa esses estilos dentro de coleções `const`, e
+   `.copyWith` não é const. Corrigido reescrevendo cada estilo como `const TextStyle(...)`
+   literal. Confirmado localmente: `flutter build web --release` agora passa da etapa
+   de compilação (o único erro restante ao rodar localmente foi um crash do compilador
+   de shaders `impellerc`, que parece ser específico deste Mac/sandbox local — não
+   deve reproduzir no container Linux do Vercel).
 
 ## Também não renomeado (proposital)
 
