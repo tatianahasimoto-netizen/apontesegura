@@ -7,7 +7,6 @@ import '../theme/cpf_seguro_typography.dart';
 import 'cpf_seguro_action.dart';
 import 'cpf_seguro_amount.dart';
 import 'cpf_seguro_avatar.dart';
-import 'cpf_seguro_progress_ring.dart';
 import 'cpf_seguro_checkbox.dart';
 import 'cpf_seguro_icon_accessory.dart';
 import 'cpf_seguro_spot_icon.dart';
@@ -63,7 +62,6 @@ import '../theme/cpf_seguro_icon_tokens.dart';
 /// - [CpfSeguroLeftAccessory.spotIcon]      — círculo colorido com ícone
 /// - [CpfSeguroLeftAccessory.avatar]        — iniciais em círculo 40
 /// - [CpfSeguroLeftAccessory.iconAccessory] — ícone puro + badge opt
-/// - [CpfSeguroLeftAccessory.progressRing]  — anel de progresso + label
 ///
 /// Sempre `height: 72` (encaixe do row). Centraliza vertical.
 sealed class CpfSeguroLeftAccessory extends StatelessWidget {
@@ -94,15 +92,6 @@ sealed class CpfSeguroLeftAccessory extends StatelessWidget {
     CpfSeguroBadge badge,
     bool danger,
   }) = _LeftIconAccessory;
-
-  /// Consome [CpfSeguroProgressRing] (anel de progresso + label). Ex.: % de uso
-  /// de um serviço.
-  const factory CpfSeguroLeftAccessory.progressRing({
-    Key? key,
-    required double progress,
-    String? label,
-    double size,
-  }) = _LeftProgressRing;
 
   /// Renderiza o conteúdo específico da variante. Override nas subclasses.
   Widget _renderChild();
@@ -192,17 +181,6 @@ class _LeftIconAccessory extends CpfSeguroLeftAccessory {
       ),
     );
   }
-}
-
-class _LeftProgressRing extends CpfSeguroLeftAccessory {
-  const _LeftProgressRing({super.key, required this.progress, this.label, this.size = 40});
-
-  final double progress;
-  final String? label;
-  final double size;
-
-  @override
-  Widget _renderChild() => CpfSeguroProgressRing(progress: progress, label: label, size: size);
 }
 
 // ═══════════════════════════════════════════════════════════════════════════

@@ -4,7 +4,6 @@ import 'design_system/cpf_seguro_design_system.dart';
 import 'ds_tree_screen.dart';
 import 'grammar_screen.dart';
 import 'parity_screen.dart';
-import 'sdk_screen.dart';
 import 'spec_tables.dart';
 import 'tokens_screen.dart';
 
@@ -39,7 +38,7 @@ class _CatalogHome extends StatefulWidget {
 
 /// IA no padrão Material 3 (m3.material.io): Foundations → Styles → Components,
 /// mais os handoffs (Specs, SDK) e o tracker de Integração.
-enum _Tab { foundations, styles, components, specs, sdk, integracao }
+enum _Tab { foundations, styles, components, specs, integracao }
 
 class _CatalogHomeState extends State<_CatalogHome> {
   _Tab _tab = _Tab.components;
@@ -67,8 +66,6 @@ class _CatalogHomeState extends State<_CatalogHome> {
         return const _StylesScreen();
       case _Tab.components:
         return const _CatalogScreen();
-      case _Tab.sdk:
-        return const SdkScreen();
       case _Tab.integracao:
         return const ParityScreen();
       case _Tab.specs:
@@ -121,8 +118,6 @@ class _TabBar extends StatelessWidget {
           _TabButton(label: 'Components', selected: active == _Tab.components, onTap: () => onTap(_Tab.components)),
           const SizedBox(width: 4),
           _TabButton(label: 'Specs', selected: active == _Tab.specs, onTap: () => onTap(_Tab.specs)),
-          const SizedBox(width: 4),
-          _TabButton(label: 'SDK', selected: active == _Tab.sdk, onTap: () => onTap(_Tab.sdk)),
           const SizedBox(width: 4),
           _TabButton(label: 'Integração', selected: active == _Tab.integracao, onTap: () => onTap(_Tab.integracao)),
         ],
@@ -411,8 +406,6 @@ class _CatalogScreenState extends State<_CatalogScreen> {
           _NavigationButtonSection(),
           _MenuButtonSection(),
           _ActionSection(),
-          _PartnerButtonSection(),
-          _WalletButtonSection(),
         ];
       case _Cat.inputs:
         return const [
@@ -442,12 +435,6 @@ class _CatalogScreenState extends State<_CatalogScreen> {
           _MacroHeader('LOADING & PROGRESSO'),
           _LoadingSpinnerSection(),
           _SkeletonSection(),
-          _ProgressBarSection(),
-          _ProgressRingSection(),
-          _MacroHeader('BANNERS'),
-          _StatusBannerSection(),
-          _PromoBannerSection(),
-          _NoticeBannerSection(),
         ];
       case _Cat.containment:
         return const [
@@ -458,20 +445,14 @@ class _CatalogScreenState extends State<_CatalogScreen> {
           _FeatureDetailCardSection(),
           _InfoCardSection(),
           _QuickAccessCardSection(),
-          _ChatCompletionCardSection(),
           _MacroHeader('LISTAS & LINHAS'),
           _AppListSection(),
           _DayGroupSection(),
           _DetailRowSection(),
           _CriteriaListSection(),
-          _JourneyStepSection(),
           _EmptyStateSection(),
           _MacroHeader('SHEETS'),
           _SheetsSection(),
-          _PaymentSheetSection(),
-          _CheckoutSheetSection(),
-          _MacroHeader('TELA (SDK)'),
-          _SdkScreenSection(),
         ];
       case _Cat.navigation:
         return const [
@@ -500,11 +481,9 @@ class _CatalogScreenState extends State<_CatalogScreen> {
           _MacroHeader('VALOR & CARTEIRA'),
           _AmountSection(),
           _AmountDisplaySection(),
-          _WalletCardSection(),
           _ReceiptSection(),
-          _MacroHeader('CONFIANÇA & COBRANDING'),
+          _MacroHeader('CONFIANÇA'),
           _FaceIdCardSection(),
-          _CobrandingSection(),
           _MacroHeader('CHAT'),
           _ChatSection(),
         ];
@@ -1597,7 +1576,7 @@ class _ButtonsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Section(
-      title: 'BUTTON · 8 types × 2 states × 3 sizes + chatLift',
+      title: 'BUTTON · 5 types × 2 states × 3 sizes + chatLift',
       role: 'A ação. Primary = a ação principal da tela (Pagar, Continuar); secondary/tertiary descem a hierarquia; state error = destrutivo. Como CTA, vive ancorado na bottom bar.',
       composedOf: const ['Icon', 'Color', 'Typography', 'Radius', 'Shadow'],
       specId: 'design-system-button',
@@ -1621,21 +1600,17 @@ class _ButtonsSection extends StatelessWidget {
           _row('Types (state normal, size lg)', const [
             CpfSeguroButton(label: 'primary', type: CpfSeguroButtonType.primary, onPressed: _noop),
             CpfSeguroButton(label: 'secondary', type: CpfSeguroButtonType.secondary, onPressed: _noop),
-            CpfSeguroButton(label: 'secondary-primary', type: CpfSeguroButtonType.secondaryPrimary, onPressed: _noop),
-            CpfSeguroButton(label: 'white', type: CpfSeguroButtonType.white, onPressed: _noop),
             CpfSeguroButton(label: 'tertiary', type: CpfSeguroButtonType.tertiary, onPressed: _noop),
-            CpfSeguroButton(label: 'tertiary-primary', type: CpfSeguroButtonType.tertiaryPrimary, onPressed: _noop),
           ]),
           // Família branca — precisa de fundo colorido/escuro pra aparecer.
           _rowOnDark('Família branca — sobre fundo colorido/escuro (onboarding/splash)', const [
-            CpfSeguroButton(label: 'white', type: CpfSeguroButtonType.white, onPressed: _noop),
             CpfSeguroButton(label: 'secondary-white', type: CpfSeguroButtonType.secondaryWhite, onPressed: _noop),
             CpfSeguroButton(label: 'tertiary-white', type: CpfSeguroButtonType.tertiaryWhite, onPressed: _noop),
           ]),
           _row('State error (destructive)', const [
             CpfSeguroButton(label: 'primary', type: CpfSeguroButtonType.primary, state: CpfSeguroButtonState.error, onPressed: _noop),
-            CpfSeguroButton(label: 'secondary-primary', type: CpfSeguroButtonType.secondaryPrimary, state: CpfSeguroButtonState.error, onPressed: _noop),
-            CpfSeguroButton(label: 'tertiary-primary', type: CpfSeguroButtonType.tertiaryPrimary, state: CpfSeguroButtonState.error, onPressed: _noop),
+            CpfSeguroButton(label: 'secondary', type: CpfSeguroButtonType.secondary, state: CpfSeguroButtonState.error, onPressed: _noop),
+            CpfSeguroButton(label: 'tertiary', type: CpfSeguroButtonType.tertiary, state: CpfSeguroButtonState.error, onPressed: _noop),
           ]),
           _row('Sizes (sm / md / lg)', const [
             CpfSeguroButton(label: 'sm', size: CpfSeguroButtonSize.sm, onPressed: _noop),
@@ -1650,13 +1625,6 @@ class _ButtonsSection extends StatelessWidget {
           _row('Com ícone', const [
             CpfSeguroButton(label: 'Continuar', trailIcon: CpfSeguroIcons.angleRightLight, onPressed: _noop),
             CpfSeguroButton(label: 'Voltar', leadIcon: CpfSeguroIcons.angleRightLight, type: CpfSeguroButtonType.secondary, onPressed: _noop),
-          ]),
-          _row('Gradient (brandLift, o azul mais forte) — todas as hierarquias', const [
-            CpfSeguroButton(label: 'primary', gradient: true, onPressed: _noop),
-            CpfSeguroButton(label: 'secondary', type: CpfSeguroButtonType.secondary, gradient: true, onPressed: _noop),
-            CpfSeguroButton(label: 'secondary-primary', type: CpfSeguroButtonType.secondaryPrimary, gradient: true, onPressed: _noop),
-            CpfSeguroButton(label: 'tertiary', type: CpfSeguroButtonType.tertiary, gradient: true, onPressed: _noop),
-            CpfSeguroButton(label: 'tertiary-primary', type: CpfSeguroButtonType.tertiaryPrimary, gradient: true, onPressed: _noop),
           ]),
         ],
       ),
@@ -2596,7 +2564,7 @@ class _TopAppBarSection extends StatelessWidget {
             stepper: const CpfSeguroStepper(
               current: 2,
               total: 5,
-              label: CpfSeguroCobrandMark(logoSize: 36, textSize: 11),
+              labelText: 'CRIAR SENHA',
             ),
           )),
         ],
@@ -2835,34 +2803,6 @@ class _GlassSurface extends StatelessWidget {
             ]),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// Cobranding
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _CobrandingSection extends StatelessWidget {
-  const _CobrandingSection();
-
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'COBRANDING · CobrandMark (ativo) × CobrandedBadge (passivo)',
-      composedOf: const ['Logo', 'Color', 'Typography'],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('CobrandMark · "{PARCEIRO} + [logo]" (chat, SDK header)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-          const SizedBox(height: 12),
-          const CpfSeguroCobrandMark(),
-          const SizedBox(height: 32),
-          Text('CobrandedBadge · "Protegido por [logo]" (rodapé passivo)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-          const SizedBox(height: 12),
-          const CpfSeguroCobrandedBadge(),
-        ],
       ),
     );
   }
@@ -3674,18 +3614,10 @@ class _StepperSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return _Section(
       title: 'STEPPER · "{label} · Passo X de Y" + segmentos coloridos',
-      composedOf: const ['CobrandMark', 'Color', 'Typography', 'Radius'],
+      composedOf: const ['Color', 'Typography', 'Radius'],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('com CobrandMark (padrão SDK)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-          const SizedBox(height: 8),
-          const SizedBox(width: 393, child: CpfSeguroStepper(
-            current: 2,
-            total: 5,
-            label: CpfSeguroCobrandMark(logoSize: 36, textSize: 11),
-          )),
-          const SizedBox(height: 16),
           Text('com labelText simples', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
           const SizedBox(height: 8),
           const SizedBox(width: 393, child: CpfSeguroStepper(
@@ -4029,108 +3961,6 @@ class _InputChipSection extends StatelessWidget {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// ActivityProgress
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _ProgressRingSection extends StatelessWidget {
-  const _ProgressRingSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'PROGRESSRING · anel de progresso + label',
-      specId: 'design-system-progress-ring',
-      whenUse: 'progresso CIRCULAR conhecido com label central (nível do serviço '
-          '"sou eu"). Consumido por left.progressRing na AppListRow.',
-      dos: const [
-        'Label central com o valor/percentual.',
-        'Use quando o formato circular comunica melhor que a barra.',
-      ],
-      donts: const [
-        'Ring pra progresso linear longo (isso é ProgressBar).',
-        'Ring sem valor/label.',
-      ],
-      role: 'Anel circular de progresso com label central (ex. % restante de um serviço). Consumido por left.progressRing na AppList.',
-      composedOf: const ['Color', 'Typography'],
-      child: Wrap(spacing: 20, children: const [
-        CpfSeguroProgressRing(progress: 0.25, label: '75'),
-        CpfSeguroProgressRing(progress: 0.6, label: '40'),
-        CpfSeguroProgressRing(progress: 0.9, label: '10'),
-      ]),
-    );
-  }
-}
-
-class _ProgressBarSection extends StatelessWidget {
-  const _ProgressBarSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'PROGRESSBAR · .banner (secure sobre gradient) × .activity (azul)',
-      specId: 'design-system-progress-bar',
-      whenUse: 'progresso LINEAR conhecido (2fa por instituição, upload) ou '
-          'atividade contínua. Espera indeterminada → LoadingSpinner.',
-      dos: const [
-        '.activity pra progresso de tarefa; .banner (secure) sobre gradient.',
-        'caption com o passo atual (incl. falhas).',
-      ],
-      donts: const [
-        'ProgressBar pra espera sem medida (isso é spinner).',
-        'Reusar pro stepper segmentado do onboarding (esse diverge, é bespoke).',
-      ],
-      role: 'Progresso determinado — pausa de CPF, stepper de onboarding.',
-      composedOf: const ['Color', 'Typography', 'Radius'],
-      child: SizedBox(
-        width: 360,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const CpfSeguroProgressBar.activity(
-              confirmed: 10,
-              total: 12,
-              caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-            ),
-            const SizedBox(height: 24),
-            Text('.banner — dentro do StatusBanner (progress:)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(gradient: CpfSeguroGradients.brandLift, borderRadius: CpfSeguroRadius.all16),
-              child: const CpfSeguroProgressBar.banner(
-                confirmed: 10,
-                total: 12,
-                caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-              ),
-            ),
-            const SizedBox(height: 24),
-            Text('.activity — dentro do AppList.activityItem (footer:)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            CpfSeguroAppListRow.activityItem(
-              icon: CpfSeguroIcons.idCardLight,
-              iconType: CpfSeguroSpotType.outline,
-              iconState: CpfSeguroSpotState.secure,
-              iconBadge: CpfSeguroBadge.primary,
-              title: 'CPF Pausado',
-              subtitle: 'Por mim · Biometria',
-              time: '12:04',
-              status: const CpfSeguroStatusTagData(label: 'Ver detalhes', tone: CpfSeguroStatusTone.secure),
-              footer: const CpfSeguroProgressBar.activity(
-                confirmed: 10,
-                total: 12,
-                caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-              ),
-            ),
-            const SizedBox(height: 24),
-            Text('.value — progresso contínuo dirigido pelo consumidor (0..1)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            const CpfSeguroProgressBar.value(value: 0.7),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
 // SearchInput
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -4276,266 +4106,6 @@ class _PickersSectionState extends State<_PickersSection> {
   }
 }
 
-class _PromoBannerSection extends StatelessWidget {
-  const _PromoBannerSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'PROMOBANNER · card de chamada (CTA) — light / solid',
-      specId: 'design-system-promo-banner',
-      whenUse: 'card de chamada com UM CTA (oferta, novidade, "conheça X"). '
-          'Marketing/ativação, não estado da conta.',
-      dos: const [
-        'variant light ou solid conforme o destaque.',
-        'Um CTA claro.',
-        'Ilustração por token (illustration: enum).',
-      ],
-      donts: const [
-        'PromoBanner pra estado da conta (isso é StatusBanner).',
-        'Vários CTAs competindo no mesmo banner.',
-      ],
-      role: 'Banner promocional: título + subtítulo + ilustração + botão. '
-          'Chamada pra ação (ativar conta, conhecer feature). Distinto do '
-          'StatusBanner (nível/progresso do onboarding).',
-      composedOf: const ['Illustration', 'Button', 'Color', 'Typography', 'Radius'],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 360,
-            child: CpfSeguroPromoBanner(
-              title: 'Ative sua conta',
-              subtitle: 'Complete o cadastro pra usar o Pix.',
-              illustration: CpfSeguroIllustration.keyWord,
-              buttonLabel: 'Continuar',
-              onPressed: () {},
-            ),
-          ),
-          const SizedBox(height: 16),
-          SizedBox(
-            width: 360,
-            child: CpfSeguroPromoBanner(
-              title: 'Conheça o CPF Seguro',
-              illustration: CpfSeguroIllustration.securityPhone,
-              variant: CpfSeguroPromoBannerVariant.solid,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _NoticeBannerSection extends StatelessWidget {
-  const _NoticeBannerSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'NOTICEBANNER · card claro de aviso/estado + botão-ícone',
-      specId: 'design-system-notice-banner',
-      whenUse: 'card claro de aviso/estado da conta com botão-ícone (fechar ou '
-          'uma ação). Mais leve que StatusBanner, mais informativo que Toast.',
-      dos: const [
-        'Mensagem curta de aviso/estado.',
-        'Ilustração por token (illustration: enum).',
-        'Botão-ícone pra fechar ou a ação única.',
-      ],
-      donts: const [
-        'NoticeBanner como promoção (isso é PromoBanner).',
-        'NoticeBanner como o hero de proteção (isso é StatusBanner).',
-      ],
-      role: 'Card claro ilustrado de estado da conta (em análise, KYC pendente, '
-          'bloqueado): borda primary-04, ilustração no canto + botão-ícone (+). '
-          'Distinto do PromoBanner (CTA texto) e do StatusBanner (nível/gradiente).',
-      composedOf: const ['IllustrationAccessory', 'IconButton', 'Color', 'Typography', 'Radius'],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            width: 360,
-            child: CpfSeguroNoticeBanner(
-              title: 'Conta em análise',
-              description: 'Avisamos assim que estiver tudo certo.',
-              illustration: CpfSeguroIllustration.keyWord,
-              showButton: false,
-            ),
-          ),
-          const SizedBox(height: 16),
-          SizedBox(
-            width: 360,
-            child: CpfSeguroNoticeBanner(
-              title: 'Complete seu cadastro',
-              description: 'Falta pouco pra liberar tudo.',
-              illustration: CpfSeguroIllustration.timerWoman,
-              onTap: () {},
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatusBannerSection extends StatelessWidget {
-  const _StatusBannerSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'STATUSBANNER · level / pausa / doc em análise / doc erro / offline',
-      specId: 'design-system-status-banner',
-      whenUse: 'o card de ESTADO da conta/proteção no topo da home (nível, pausa, '
-          'doc em análise/erro). Um por tela.',
-      dos: const [
-        'eyebrow (estado) + footnote (verificado/pausado + instituições).',
-        'StatusBannerButton pra ação principal (pausar/reativar).',
-        'Um StatusBanner por tela (é o hero de estado).',
-      ],
-      donts: const [
-        'StatusBanner pra promoção (isso é PromoBanner).',
-        'StatusBanner pra aviso simples (isso é NoticeBanner).',
-        'Voltar com status-dot/info-pills (saíram na decisão 07-21).',
-      ],
-      composedOf: const ['Icon', 'Color', 'Gradients', 'Shadow', 'Typography', 'Radius'],
-      child: SizedBox(
-        width: 360,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text('level · chip + eyebrow + CTA circular', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            CpfSeguroStatusBanner(
-              level: 1,
-              eyebrow: 'PRÓXIMO PASSO',
-              title: 'Reconhecimento Facial · 30s',
-              leftAccessory: const CpfSeguroStatusBannerActionIcon(icon: CpfSeguroIcons.cameraLight),
-              rightAccessory: CpfSeguroStatusBannerCTA(onPressed: _noop),
-            ),
-            const SizedBox(height: 24),
-            Text('pausa ativa · icon secure + subtitle + progress + button', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            const CpfSeguroStatusBanner(
-              level: 3,
-              title: 'Seu CPF está no modo segurança',
-              subtitle: 'Pausado em 26/09/2026 por mim',
-              leftAccessory: CpfSeguroStatusBannerActionIcon(
-                icon: CpfSeguroIcons.lockLight,
-                bg: CpfSeguroColors.secure04,
-                borderColor: CpfSeguroColors.secure07Alpha38,
-              ),
-              progress: CpfSeguroProgressBar.banner(
-                confirmed: 10,
-                total: 12,
-                caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-              ),
-              button: CpfSeguroStatusBannerButton(label: 'Ver detalhes'),
-            ),
-            const SizedBox(height: 24),
-            Text('doc em análise · sem CTA', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            const CpfSeguroStatusBanner(
-              level: 1,
-              eyebrow: 'EM ANÁLISE',
-              title: 'Documento em análise',
-              leftAccessory: CpfSeguroStatusBannerActionIcon(icon: CpfSeguroIcons.clockLight),
-            ),
-            const SizedBox(height: 24),
-            Text('doc erro · body: ErrorPanel + button', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            const CpfSeguroStatusBanner(
-              level: 1,
-              body: CpfSeguroStatusBannerErrorPanel(
-                icon: CpfSeguroIcons.idCardLight,
-                title: 'Não foi possível ler o documento',
-                subtitle: 'Tente novamente em um lugar bem iluminado.',
-              ),
-              button: CpfSeguroStatusBannerButton(label: 'Reenviar documento'),
-            ),
-            const SizedBox(height: 24),
-            Text('offline · OfflinePill acima (gap 8)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-            const SizedBox(height: 8),
-            const CpfSeguroOfflinePill(),
-            const SizedBox(height: 8),
-            const CpfSeguroStatusBanner(
-              level: 3,
-              eyebrow: 'VERIFICADO ÀS 14:12',
-              title: 'Seu CPF está protegido',
-              leftAccessory: CpfSeguroStatusBannerActionIcon(icon: CpfSeguroIcons.lockLight),
-              rightAccessory: CpfSeguroStatusBannerCTA(icon: CpfSeguroIcons.pauseLightFull, rotate: 0),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// PartnerButton
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _PartnerButtonSection extends StatelessWidget {
-  const _PartnerButtonSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'PARTNERBUTTON · CTA na cor do parceiro (Aurora)',
-      composedOf: const ['Color', 'Typography', 'Radius'],
-      child: Wrap(spacing: 12, runSpacing: 12, children: [
-        CpfSeguroPartnerButton(label: 'Continuar no Aurora', onPressed: _noop),
-        const CpfSeguroPartnerButton(label: 'disabled', onPressed: null, disabled: true),
-      ]),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// ChatCompletionCard (+ CobrandEyebrow)
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _ChatCompletionCardSection extends StatelessWidget {
-  const _ChatCompletionCardSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'CHATCOMPLETIONCARD · conclusão de fluxo (+ CobrandEyebrow)',
-      specId: 'design-system-chat-completion-card',
-      whenUse: 'card de conclusão de um nível/fluxo dentro do chat (nível '
-          'concluído + próximo nível + CTAs). Vive no onboarding.',
-      dos: const [
-        'primary opcional pra ação de avançar.',
-        'slot nextLevel expansível pro próximo nível.',
-      ],
-      donts: const [
-        'Usar fora do chat/onboarding.',
-        'Empilhar CTAs sem hierarquia.',
-      ],
-      composedOf: const ['Icon', 'Button', 'Color', 'Gradients', 'Typography', 'Radius'],
-      child: SizedBox(
-        width: 360,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CpfSeguroCobrandEyebrow(partnerName: 'Banco Aurora'),
-            const SizedBox(height: 8),
-            CpfSeguroChatCompletionCard(
-              title: 'Conta protegida!',
-              eyebrow: 'NÍVEL 1 ATIVO',
-              levelChip: const CpfSeguroLevelProgress(current: 1, total: 3),
-              capabilities: const [
-                CpfSeguroCompletionCapability(icon: CpfSeguroIcons.keyLight, label: 'Aprovar por código'),
-                CpfSeguroCompletionCapability(icon: CpfSeguroIcons.bellLight, label: 'Notificação em toda tentativa'),
-              ],
-              nextLevelLabel: 'Reconhecimento facial · 30s',
-              primary: CpfSeguroCtaAction(label: 'Voltar ao Aurora', onPressed: _noop),
-              secondary: CpfSeguroCtaAction(label: 'Conhecer o app', onPressed: _noop),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 // ═══════════════════════════════════════════════════════════════════════════
 // Sheets e overlays
 // ═══════════════════════════════════════════════════════════════════════════
@@ -4586,96 +4156,6 @@ class _SheetsSection extends StatelessWidget {
       const SizedBox(height: 8),
       Text(label, style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral04)),
     ]);
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// SdkScreen (layout de tela do SDK)
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _SdkScreenSection extends StatelessWidget {
-  const _SdkScreenSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'SDKSCREEN · layout Welcome/ErrorFatal (cobrand + hero + CTA)',
-      specId: 'design-system-sdk-screen',
-      whenUse: 'tela cheia de resultado/entrada (Welcome, ErrorFatal): cobrand no '
-          'topo + hero central + CTA. Full-bleed, não a Surface padrão de 3 slots.',
-      dos: const [
-        'Cobrand no topo; hero (ilustração/título) central; CTA embaixo.',
-        'Usar pra telas de resultado/boas-vindas do fluxo.',
-      ],
-      donts: const [
-        'SDKScreen pra tela comum do app (use CpfSeguroSurface).',
-        'Encher de conteúdo — é tela de um foco só.',
-      ],
-      composedOf: const ['CobrandEyebrow', 'Illustration', 'Button', 'Color', 'Typography'],
-      child: Container(
-        width: 393,
-        height: 700,
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(
-          color: CpfSeguroColors.white,
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: CpfSeguroColors.neutral09, width: 1),
-        ),
-        child: CpfSeguroSdkScreen(
-          partnerName: 'Banco Aurora',
-          title: 'Proteja seu CPF em 2 minutos',
-          subtitle: 'Verificação rápida com biometria e documento.',
-          illustration: CpfSeguroIllustration.fingerprint,
-          primaryLabel: 'Começar',
-          onPrimary: _noop,
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// WalletCard (+ Stack)
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _WalletCardSection extends StatelessWidget {
-  const _WalletCardSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'WALLETCARD · cpfSeguro / partner / skeleton / payment + Stack',
-      specId: 'design-system-wallet-card',
-      whenUse: 'o cartão da carteira / meio de pagamento (variantes cpfSeguro, '
-          'partner, payment, pixSplash) — hero visual do cartão.',
-      dos: const [
-        'Variante conforme o cartão (pixSplash no fluxo NFC).',
-        'Skeleton enquanto carrega os dados do cartão.',
-      ],
-      donts: const [
-        'WalletCard como card informativo genérico (isso é InfoCard).',
-      ],
-      composedOf: const ['Icon', 'Logo', 'Color', 'Typography', 'Radius'],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(spacing: 16, runSpacing: 16, children: const [
-            SizedBox(width: 345, child: CpfSeguroWalletCard.cpfSeguro()),
-            SizedBox(width: 345, child: CpfSeguroWalletCard.partner()),
-            SizedBox(width: 345, child: CpfSeguroWalletCard.skeleton()),
-            SizedBox(width: 345, child: CpfSeguroWalletCard.payment()),
-          ]),
-          const SizedBox(height: 24),
-          Text('WalletCardStack · parceiro atrás (peek 50)', style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral05)),
-          const SizedBox(height: 8),
-          const SizedBox(
-            width: 345,
-            child: CpfSeguroWalletCardStack(
-              back: CpfSeguroWalletCard.partner(),
-              front: CpfSeguroWalletCard.cpfSeguro(),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
 
@@ -4924,222 +4404,6 @@ class _ReceiptSection extends StatelessWidget {
             'CNPJ: 12.234.456.123/0001-58',
           ],
           transactionId: 'e00343456542444324453455666e3555434554',
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// PaymentSheet
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _PaymentSheetSection extends StatelessWidget {
-  const _PaymentSheetSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'PAYMENTSHEET · faceId → approach → confirm → processing → success/failed',
-      composedOf: const ['WalletCard', 'FaceIdCard', 'TopAppBar', 'Button', 'Icon', 'Color', 'Radius'],
-      child: Wrap(spacing: 24, runSpacing: 24, children: [
-        for (final (label, state) in const [
-          ('faceId', CpfSeguroPaymentSheetState.faceId),
-          ('approach', CpfSeguroPaymentSheetState.approach),
-          ('confirm', CpfSeguroPaymentSheetState.confirm),
-          ('processing', CpfSeguroPaymentSheetState.processing),
-          ('success', CpfSeguroPaymentSheetState.success),
-          ('failed', CpfSeguroPaymentSheetState.failed),
-        ])
-          Column(mainAxisSize: MainAxisSize.min, children: [
-            Container(
-              width: 340,
-              height: 620,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: CpfSeguroColors.white,
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: CpfSeguroColors.neutral09, width: 1),
-              ),
-              child: Stack(children: [
-                CpfSeguroPaymentSheet(
-                  open: true,
-                  onClose: _noop,
-                  state: state,
-                  value: state == CpfSeguroPaymentSheetState.confirm ||
-                          state == CpfSeguroPaymentSheetState.success
-                      ? 'R\$ 1,00'
-                      : null,
-                  timestamp: state == CpfSeguroPaymentSheetState.success ? 'hoje às 17:43' : null,
-                  onPay: _noop,
-                  onReadQr: _noop,
-                  onSuccessAction: _noop,
-                  onRetry: _noop,
-                  onChangeCard: _noop,
-                ),
-              ]),
-            ),
-            const SizedBox(height: 8),
-            Text(label, style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral04)),
-          ]),
-      ]),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// WalletButton (embed do parceiro)
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _WalletButtonSection extends StatelessWidget {
-  const _WalletButtonSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'WALLETBUTTON · o único embed do parceiro (pay / manage / disabled)',
-      composedOf: const ['Logo', 'Color', 'Typography', 'Radius'],
-      child: SizedBox(
-        width: 345,
-        child: Column(children: [
-          CpfSeguroWalletButton(variant: CpfSeguroWalletButtonVariant.pay, onPressed: _noop),
-          const SizedBox(height: 8),
-          CpfSeguroWalletButton(variant: CpfSeguroWalletButtonVariant.manage, onPressed: _noop),
-          const SizedBox(height: 8),
-          const CpfSeguroWalletButton(disabled: true),
-        ]),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// CheckoutSheet
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _CheckoutSheetSection extends StatelessWidget {
-  const _CheckoutSheetSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'CHECKOUTSHEET · bench iFood: summary → methods (Pix+cartões) → newCard / pix',
-      composedOf: const ['AppList', 'Input', 'Checkbox', 'Button', 'TopAppBar'],
-      child: Wrap(spacing: 24, runSpacing: 24, children: [
-        for (final (label, state) in const [
-          ('summary', CpfSeguroCheckoutSheetState.summary),
-          ('methods', CpfSeguroCheckoutSheetState.methods),
-          ('newCard', CpfSeguroCheckoutSheetState.newCard),
-          ('pix', CpfSeguroCheckoutSheetState.pix),
-        ])
-          Column(mainAxisSize: MainAxisSize.min, children: [
-            Container(
-              width: 340,
-              height: 720,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: CpfSeguroColors.white,
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: CpfSeguroColors.neutral09, width: 1),
-              ),
-              child: Stack(children: [
-                CpfSeguroCheckoutSheet(
-                  open: true,
-                  onClose: _noop,
-                  state: state,
-                  merchant: 'Pague menos',
-                  merchantInitials: 'PM',
-                  orderRef: 'Pedido #4821',
-                  amount: 'R\$ 560,00',
-                  lines: const [
-                    CpfSeguroCheckoutLine(label: 'Subtotal', value: 'R\$ 545,00'),
-                    CpfSeguroCheckoutLine(label: 'Taxa de serviço', value: 'R\$ 15,00'),
-                    CpfSeguroCheckoutLine(label: 'Total', value: 'R\$ 560,00', emphasized: true),
-                  ],
-                  cards: const [
-                    CpfSeguroCheckoutCard(label: 'CPF Seguro •••• 7654', sublabel: 'Cartão padrão'),
-                    CpfSeguroCheckoutCard(label: 'CPF Seguro •••• 8890', sublabel: 'Crédito'),
-                  ],
-                  pixSelected: state == CpfSeguroCheckoutSheetState.pix,
-                  pixCode: '00020126580014BR.GOV.BCB.PIX0136a1b2c3d4-e5f6-7890-abcd-ef123456789052040000530398654055'
-                      '60.005802BR5912CPF SEGURO SA6009SAO PAULO62070503***6304A1B2',
-                  pixExpiry: '9:58',
-                ),
-              ]),
-            ),
-            const SizedBox(height: 8),
-            Text(label, style: CpfSeguroType.labelSm.copyWith(color: CpfSeguroColors.neutral04)),
-          ]),
-      ]),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// JourneyStep
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _JourneyStepSection extends StatelessWidget {
-  const _JourneyStepSection();
-  @override
-  Widget build(BuildContext context) {
-    return _Section(
-      title: 'JOURNEYSTEP · stepper vertical da Jornada (done azul · resto cinza)',
-      specId: 'design-system-journey-step',
-      whenUse: 'o stepper VERTICAL da jornada de níveis (done azul, próximo/'
-          'bloqueado cinza), com capacidades e as ações da própria pendência.',
-      dos: const [
-        'circle-check no done (nunca check solto).',
-        'Capacidades sempre uma embaixo da outra.',
-        'Cada nível traz os botões das próprias pendências.',
-      ],
-      donts: const [
-        'JourneyStep pra progresso linear (isso é ProgressBar).',
-        'Check sem o círculo.',
-      ],
-      composedOf: const ['Icon', 'StatusTag', 'Color', 'Typography', 'Radius'],
-      child: SizedBox(
-        width: 380,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
-            CpfSeguroJourneyStep(
-              number: '1',
-              title: 'Nível 1 · Cadastrado',
-              state: CpfSeguroJourneyStepState.done,
-              tag: CpfSeguroStatusTagData(label: 'Você está aqui', tone: CpfSeguroStatusTone.primary),
-              caption: 'Circle-check azul + conector dashed azul.',
-              capabilities: [
-                CpfSeguroFeatureCapability(icon: CpfSeguroIcons.shieldUserLightFull, label: 'Proteção básica ativa'),
-                CpfSeguroFeatureCapability(icon: CpfSeguroIcons.bellLight, label: 'Alerta de uso do CPF'),
-              ],
-            ),
-            CpfSeguroJourneyStep(
-              number: '2',
-              title: 'Nível 2 · Biométrico',
-              state: CpfSeguroJourneyStepState.next,
-              tag: CpfSeguroStatusTagData(label: 'Próximo passo', tone: CpfSeguroStatusTone.warning),
-              caption: 'Ainda não tem = cinza. Capacidades SEMPRE empilhadas.',
-              capabilities: [
-                CpfSeguroFeatureCapability(icon: CpfSeguroIcons.fingerprintLight, label: 'Login por biometria'),
-                CpfSeguroFeatureCapability(icon: CpfSeguroIcons.keyLight, label: 'Feature Sou eu!'),
-              ],
-              actions: [
-                CpfSeguroJourneyAction(icon: CpfSeguroIcons.cameraLight, label: 'Fazer reconhecimento facial · 30s'),
-              ],
-            ),
-            CpfSeguroJourneyStep(
-              number: '3',
-              title: 'Nível 3 · Verificado',
-              state: CpfSeguroJourneyStepState.locked,
-              tag: CpfSeguroStatusTagData(label: 'Te esperando', tone: CpfSeguroStatusTone.neutral, icon: CpfSeguroIcons.lockLight),
-              capabilities: [
-                CpfSeguroFeatureCapability(icon: CpfSeguroIcons.pauseLightFull, label: 'Pausar CPF'),
-              ],
-              actions: [
-                CpfSeguroJourneyAction(icon: CpfSeguroIcons.cameraLight, label: 'Fazer reconhecimento facial'),
-                CpfSeguroJourneyAction(icon: CpfSeguroIcons.idCardLight, label: 'Enviar documento · 2min'),
-              ],
-              isLast: true,
-            ),
-          ],
         ),
       ),
     );

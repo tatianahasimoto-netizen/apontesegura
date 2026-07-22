@@ -67,7 +67,6 @@ export 'widgets/cpf_seguro_info_chip.dart';
 export 'widgets/cpf_seguro_radio_list.dart';
 export 'widgets/cpf_seguro_otp_input.dart';
 export 'widgets/cpf_seguro_menu_button.dart';
-export 'widgets/cpf_seguro_partner_button.dart';
 // Listas e cards
 export 'widgets/cpf_seguro_app_list.dart';
 export 'widgets/cpf_seguro_feature_card.dart';
@@ -76,26 +75,18 @@ export 'widgets/cpf_seguro_info_card.dart';
 export 'widgets/cpf_seguro_amount.dart';
 export 'widgets/cpf_seguro_quick_access_card.dart';
 export 'widgets/cpf_seguro_empty_state.dart';
-export 'widgets/cpf_seguro_progress_bar.dart';
-export 'widgets/cpf_seguro_progress_ring.dart';
 export 'widgets/cpf_seguro_offline_pill.dart';
 // Carteira
-export 'widgets/cpf_seguro_wallet_card.dart';
-export 'widgets/cpf_seguro_wallet_card_stack.dart';
 export 'widgets/cpf_seguro_amount_display.dart';
 export 'widgets/cpf_seguro_detail_row.dart';
 export 'widgets/cpf_seguro_face_id_card.dart';
 export 'widgets/cpf_seguro_receipt.dart';
-export 'widgets/cpf_seguro_wallet_button.dart';
-export 'widgets/cpf_seguro_journey_step.dart';
 export 'widgets/cpf_seguro_dev_inspect.dart';
 export 'widgets/cpf_seguro_text.dart';
 export 'widgets/cpf_seguro_gap.dart';
 // Feedback e overlays leves
 export 'widgets/cpf_seguro_toast.dart';
 export 'widgets/cpf_seguro_tooltip.dart';
-// Cobranding
-export 'widgets/cpf_seguro_cobranded_badge.dart';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // ORGANISMS — composições em superfície (consomem moléculas)
@@ -106,37 +97,23 @@ export 'widgets/cpf_seguro_bottom_app.dart';
 // Surface — primitivo da gramática (top/content/bottom)
 export 'widgets/cpf_seguro_surface.dart';
 // Banner da Home (level/pausa/doc/erro) + slot-fillers (cada um em arquivo próprio)
-export 'widgets/cpf_seguro_status_banner.dart';
-export 'widgets/cpf_seguro_promo_banner.dart';
-export 'widgets/cpf_seguro_notice_banner.dart';
 export 'widgets/cpf_seguro_skeleton.dart';
 export 'widgets/cpf_seguro_dropdown.dart';
 export 'widgets/cpf_seguro_calendar.dart';
 export 'widgets/cpf_seguro_date_field.dart';
-export 'widgets/cpf_seguro_status_banner_action_icon.dart';
-export 'widgets/cpf_seguro_status_banner_cta.dart';
-export 'widgets/cpf_seguro_status_banner_error_panel.dart';
-export 'widgets/cpf_seguro_status_banner_button.dart';
 // Chat — cada componente em arquivo próprio (tokens internos não exportados)
 export 'widgets/cpf_seguro_chat_bubble.dart';
 export 'widgets/cpf_seguro_criteria_list.dart';
 export 'widgets/cpf_seguro_chat_criteria_bubble.dart';
 export 'widgets/cpf_seguro_chat_typing_indicator.dart';
 export 'widgets/cpf_seguro_chat_scroll.dart';
-export 'widgets/cpf_seguro_cobrand_mark.dart';
 // Chat extras — cada um em arquivo próprio
-export 'widgets/cpf_seguro_cobrand_eyebrow.dart';
-export 'widgets/cpf_seguro_chat_completion_card.dart';
 export 'widgets/cpf_seguro_chat_input.dart';
 // Sheets e overlays — cada um em arquivo próprio (SheetOverlay é interno)
 export 'widgets/cpf_seguro_exit_confirm_sheet.dart';
 export 'widgets/cpf_seguro_password_bottom_sheet.dart';
 export 'widgets/cpf_seguro_keyboard.dart';
 export 'widgets/cpf_seguro_biometria_overlay.dart';
-export 'widgets/cpf_seguro_payment_sheet.dart';
-export 'widgets/cpf_seguro_checkout_sheet.dart';
-// Layout de tela SDK (Welcome, ErrorFatal, saída)
-export 'widgets/cpf_seguro_sdk_screen.dart';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // MOTION — presets de animação e transição de tela

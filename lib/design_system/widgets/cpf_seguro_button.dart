@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter/gestures.dart';
 import '../theme/cpf_seguro_colors.dart';
 import '../theme/cpf_seguro_elevation.dart';
-import '../theme/cpf_seguro_gradients.dart';
 import '../theme/cpf_seguro_metrics.dart';
 import '../theme/cpf_seguro_scheme.dart';
 import '../theme/cpf_seguro_theme.dart';
@@ -13,13 +11,7 @@ import 'cpf_seguro_dev_inspect.dart';
 enum CpfSeguroButtonType {
   primary,
   secondary,
-  secondaryPrimary,
-
-  /// Filled branco: superfície branca (surface) + texto PRIMARY + borda neutra
-  /// sutil. `secondary` é o cinza SEM fundo.
-  white,
   tertiary,
-  tertiaryPrimary,
 
   /// Conteúdo BRANCO pra fundo colorido/escuro (onboarding/splash):
   /// secondaryWhite = outline branco SEM fundo; tertiaryWhite = fill
@@ -72,7 +64,6 @@ class CpfSeguroButton extends StatefulWidget {
     this.isLoading = false,
     this.fullWidth = false,
     this.chatLift = false,
-    this.gradient = false,
   });
 
   /// Variante "chat" — usada quando o botão fica flutuando dentro do chat.
@@ -94,8 +85,7 @@ class CpfSeguroButton extends StatefulWidget {
         trailIcon = null,
         isLoading = false,
         fullWidth = true,
-        chatLift = true,
-        gradient = false;
+        chatLift = true;
 
   final String label;
   final VoidCallback? onPressed;
@@ -110,11 +100,6 @@ class CpfSeguroButton extends StatefulWidget {
   final bool isLoading;
   final bool fullWidth;
   final bool chatLift;
-
-  /// Versão DEGRADE (brandLift, o azul mais forte) — vale pra todas as
-  /// hierarquias: primary = fill gradient · secondary(s) = border + label
-  /// gradient · tertiary(s) = label gradient. Ignorado em disabled/error.
-  final bool gradient;
 
   @override
   State<CpfSeguroButton> createState() => _CpsButtonState();
@@ -134,17 +119,7 @@ class _CpsButtonState extends State<CpfSeguroButton> {
     final s = _sizeSpec(widget.size);
     final status = _resolveStatus();
     final v = _resolveStyle(widget.type, widget.state, status, scheme);
-
-    final bool useGradient = widget.gradient &&
-        !_disabled &&
-        widget.state == CpfSeguroButtonState.normal;
-    final bool gradientFill = useGradient && widget.type == CpfSeguroButtonType.primary;
-    final bool gradientOutline = useGradient &&
-        (widget.type == CpfSeguroButtonType.secondary ||
-            widget.type == CpfSeguroButtonType.secondaryPrimary);
-    // Nas variantes não-fill, o conteúdo renderiza branco e o ShaderMask
-    // recolore com o degrade (srcIn).
-    final Color contentColor = useGradient && !gradientFill ? CpfSeguroColors.white : v.color;
+    final Color contentColor = v.color;
 
     Widget content = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -175,78 +150,6 @@ class _CpsButtonState extends State<CpfSeguroButton> {
 
     if (widget.isLoading) {
       content = _ThreeBounce(color: contentColor);
-    } else if (useGradient && !gradientFill) {
-      content = ShaderMask(
-        shaderCallback: (bounds) => CpfSeguroGradients.brandLift.createShader(bounds),
-        blendMode: BlendMode.srcIn,
-        child: content,
-      );
-    }
-
-    if (useGradient) {
-      Widget gBox;
-      if (gradientFill) {
-        gBox = Container(
-          height: s.h,
-          padding: EdgeInsets.symmetric(horizontal: s.px),
-          alignment: Alignment.center,
-          decoration: const BoxDecoration(
-            gradient: CpfSeguroGradients.brandLift,
-            borderRadius: CpfSeguroRadius.pillAll,
-          ),
-          child: content,
-        );
-      } else if (gradientOutline) {
-        // Border degrade = camada gradient de 1px com miolo branco.
-        gBox = Container(
-          height: s.h,
-          padding: const EdgeInsets.all(1),
-          decoration: const BoxDecoration(
-            gradient: CpfSeguroGradients.brandLift,
-            borderRadius: CpfSeguroRadius.pillAll,
-          ),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: s.px - 1),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: scheme.surface,
-              borderRadius: CpfSeguroRadius.pillAll,
-            ),
-            child: content,
-          ),
-        );
-      } else {
-        gBox = Container(
-          height: s.h,
-          padding: EdgeInsets.symmetric(horizontal: s.px),
-          alignment: Alignment.center,
-          child: content,
-        );
-      }
-      if (widget.fullWidth) gBox = SizedBox(width: double.infinity, child: gBox);
-      return CpfSeguroDevInfo(
-        component: 'CpfSeguroButton',
-        props: {
-          'label': "'${widget.label}'",
-          'type': widget.type.name,
-          'size': widget.size.name,
-          'gradient': 'true (brandLift)',
-        },
-        tokens: const ['gradient: brandLift (primary-03 → 05)', 'radius: pill (200)'],
-        child: Semantics(
-        button: true,
-        enabled: !_disabled,
-        label: widget.label,
-        child: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: (_disabled || widget.isLoading) ? null : widget.onPressed,
-            child: gBox,
-          ),
-        ),
-        ),
-      );
     }
 
     Widget box = AnimatedContainer(
@@ -275,7 +178,6 @@ class _CpsButtonState extends State<CpfSeguroButton> {
         'type': widget.type.name,
         'size': '${widget.size.name} (${s.h.toInt()}h)',
         'state': widget.state.name,
-        if (widget.gradient) 'gradient': 'true (brandLift)',
         if (widget.leadIcon != null) 'leadIcon': widget.leadIcon!,
         if (widget.trailIcon != null) 'trailIcon': widget.trailIcon!,
       },
@@ -384,30 +286,19 @@ _StyleShape _resolveStyle(
           color: CpfSeguroColors.white.withValues(alpha: 0.4),
           border: CpfSeguroColors.white.withValues(alpha: 0.25));
     }
-    // Filled surface (secondaryPrimary/white) mantém superfície + borda;
     // secondary (outline) fica transparente + borda; tertiary sem borda.
-    final bool filled = type == CpfSeguroButtonType.secondaryPrimary ||
-        type == CpfSeguroButtonType.white;
     final bool outlined = type == CpfSeguroButtonType.secondary;
     return _StyleShape(
       bg: type == CpfSeguroButtonType.primary
           ? CpfSeguroColors.neutral08
-          : type == CpfSeguroButtonType.white
-              ? CpfSeguroColors.white
-              : filled
-                  ? s.surface
-                  : CpfSeguroColors.transparent,
+          : CpfSeguroColors.transparent,
       color: CpfSeguroColors.neutral05,
-      // white = sem borda (só fill); só secondaryPrimary/secondary levam borda.
-      border: (type == CpfSeguroButtonType.secondaryPrimary || outlined)
-          ? CpfSeguroColors.neutral08
-          : null,
+      border: outlined ? CpfSeguroColors.neutral08 : null,
     );
   }
 
   // Marca resolvida pelo scheme (dark clareia). Error mantém paleta destrutiva.
   final Color brandBase = isError ? p.base : s.primary; // primary04 → s.primary
-  final Color brandGhost = isError ? p.bgHoverGhost : s.primarySubtle; // primary08 → s.primarySubtle
 
   switch (type) {
     case CpfSeguroButtonType.primary:
@@ -426,21 +317,6 @@ _StyleShape _resolveStyle(
               : CpfSeguroColors.transparent;
       final c = isError ? CpfSeguroColors.error04 : s.textTertiary;
       return _StyleShape(bg: bg, color: c, border: c);
-    case CpfSeguroButtonType.white:
-      // SEMPRE branco (dark tbm) + texto primary/error. SEM borda (só fill).
-      final bg = status == _Status.hover
-          ? CpfSeguroColors.neutral10
-          : status == _Status.pressed
-              ? CpfSeguroColors.neutral09
-              : CpfSeguroColors.white;
-      return _StyleShape(
-          bg: bg,
-          color: isError ? CpfSeguroColors.error03 : CpfSeguroColors.primary04);
-    case CpfSeguroButtonType.secondaryPrimary:
-      final bg = (status == _Status.hover || status == _Status.pressed)
-          ? brandGhost
-          : CpfSeguroColors.transparent;
-      return _StyleShape(bg: bg, color: brandBase, border: brandBase);
     case CpfSeguroButtonType.tertiary:
       final bg = status == _Status.hover
           ? s.surfaceMuted
@@ -449,11 +325,6 @@ _StyleShape _resolveStyle(
               : CpfSeguroColors.transparent;
       return _StyleShape(
           bg: bg, color: isError ? CpfSeguroColors.error04 : s.textTertiary);
-    case CpfSeguroButtonType.tertiaryPrimary:
-      final bg = (status == _Status.hover || status == _Status.pressed)
-          ? brandGhost
-          : CpfSeguroColors.transparent;
-      return _StyleShape(bg: bg, color: brandBase);
     case CpfSeguroButtonType.secondaryWhite:
       // Outline BRANCO pra fundo colorido (sem fundo).
       final bg = status == _Status.hover

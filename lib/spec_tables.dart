@@ -50,8 +50,6 @@ class _SpecTablesScreenState extends State<SpecTablesScreen> {
           _IconAccessorySpec(),
           _GlassSurfaceSpec(),
           _BottomHomeIndicatorSpec(),
-          _CobrandEyebrowSpec(),
-          _CobrandMarkSpec(),
           _ActionSpec(),
           _StatusTagSpec(),
           _AmountSpec(),
@@ -75,8 +73,6 @@ class _SpecTablesScreenState extends State<SpecTablesScreen> {
           _DateFieldSpec(),
           _CalendarSpec(),
           _MenuButtonSpec(),
-          _PartnerButtonSpec(),
-          _WalletButtonSpec(),
           _LeftAccessorySpec(),
           _MiddleAccessorySpec(),
           _RightAccessorySpec(),
@@ -90,11 +86,7 @@ class _SpecTablesScreenState extends State<SpecTablesScreen> {
           _EmptyStateSpec(),
           _OfflinePillSpec(),
           _InputChipSpec(),
-          _ProgressBarSpec(),
-          _ProgressRingSpec(),
-          _WalletCardSpec(),
           _DayGroupSpec(),
-          _JourneyStepSpec(),
           _ReceiptSpec(),
           _AmountDisplaySpec(),
           _DetailRowSpec(),
@@ -105,24 +97,18 @@ class _SpecTablesScreenState extends State<SpecTablesScreen> {
           _RadioListSpec(),
           _PageTitleSpec(),
           _StepperSpec(),
-          _CobrandedBadgeSpec(),
           _NavSpec(),
           _NavigationButtonSpec(),
           _NavigationTopBarSpec(),
           _ChatInputSpec(),
           _ChatTypingIndicatorSpec(),
           _KeyboardSpec(),
-          _WalletCardStackSpec(),
         ];
       case _SpecLayer.organisms:
         return const [
           SpecTierHeader(tier: 'ORGANISMS', description: 'Composições em superfície — consomem moléculas.'),
-          _StatusBannerSpec(),
-          _PaymentSheetSpec(),
-          _CheckoutSheetSpec(),
           _TopAppBarSpec(),
           _BottomAppSpec(),
-          _ChatCompletionCardSpec(),
           _FeatureDetailCardSpec(),
           _PasswordBottomSheetSpec(),
           _ExitConfirmSheetSpec(),
@@ -237,15 +223,11 @@ class _ButtonSpec extends StatelessWidget {
   static const _types = [
     ('primary', CpfSeguroButtonType.primary),
     ('secondary', CpfSeguroButtonType.secondary),
-    ('sec-primary', CpfSeguroButtonType.secondaryPrimary),
-    ('white', CpfSeguroButtonType.white),
     ('tertiary', CpfSeguroButtonType.tertiary),
-    ('tert-primary', CpfSeguroButtonType.tertiaryPrimary),
   ];
 
   // Família branca de fundo escuro — só faz sentido sobre superfície colorida.
   static const _whiteTypes = [
-    ('white', CpfSeguroButtonType.white),
     ('secondary-white', CpfSeguroButtonType.secondaryWhite),
     ('tertiary-white', CpfSeguroButtonType.tertiaryWhite),
   ];
@@ -256,15 +238,15 @@ class _ButtonSpec extends StatelessWidget {
     ('lg', CpfSeguroButtonSize.lg),
   ];
 
-  static const _rowSubs = ['primary', 'secondary', 'sec-primary', 'white', 'tertiary', 'tert-primary'];
+  static const _rowSubs = ['primary', 'secondary', 'tertiary'];
 
   @override
   Widget build(BuildContext context) {
     return SpecSection(
       title: 'Button',
       composedOf: const ['IconAccessory', 'Color', 'Typography', 'Radius', 'Shadow'],
-      subtitle: '8 types × 2 states (normal · error) × 3 sizes + status disabled. '
-          '6 de fundo claro na matriz; a família branca (white outline / fill '
+      subtitle: '5 types × 2 states (normal · error) × 3 sizes + status disabled. '
+          '3 de fundo claro na matriz; a família branca (outline / fill '
           'translúcido) vai na tabela de fundo escuro abaixo. Radius sempre pill.',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -282,8 +264,8 @@ class _ButtonSpec extends StatelessWidget {
               SpecAxisGroup(title: 'lg', subs: _rowSubs),
             ],
             cellBuilder: (r, c) {
-              final sizeIdx = r ~/ 6;
-              final typeIdx = r % 6;
+              final sizeIdx = r ~/ 3;
+              final typeIdx = r % 3;
               final disabled = c >= 2;
               final state = (c % 2 == 0) ? CpfSeguroButtonState.normal : CpfSeguroButtonState.error;
               return CpfSeguroButton(
@@ -305,7 +287,7 @@ class _ButtonSpec extends StatelessWidget {
             cellWidth: 200,
             cellHeight: 92,
             columnGroups: const [
-              SpecAxisGroup(title: 'Type', subs: ['white', 'secondary-white', 'tertiary-white']),
+              SpecAxisGroup(title: 'Type', subs: ['secondary-white', 'tertiary-white']),
             ],
             rowGroups: const [
               SpecAxisGroup(title: '·', subs: ['fundo escuro']),
@@ -602,28 +584,6 @@ class _BottomHomeIndicatorSpec extends StatelessWidget {
         composedOf: const ['Color'],
         subtitle: 'Barra home do iOS (gesture bar) na base das superficies.',
         child: const SizedBox(width: 200, child: CpfSeguroBottomHomeIndicator()),
-      );
-}
-
-class _CobrandEyebrowSpec extends StatelessWidget {
-  const _CobrandEyebrowSpec();
-  @override
-  Widget build(BuildContext context) => SpecSection(
-        title: 'CobrandEyebrow',
-        composedOf: const ['Logo', 'Typography'],
-        subtitle: 'Eyebrow de co-branding (parceiro) — topo de telas SDK.',
-        child: const CpfSeguroCobrandEyebrow(partnerName: 'BANCO AURORA'),
-      );
-}
-
-class _CobrandMarkSpec extends StatelessWidget {
-  const _CobrandMarkSpec();
-  @override
-  Widget build(BuildContext context) => SpecSection(
-        title: 'CobrandMark',
-        composedOf: const ['Logo', 'Typography'],
-        subtitle: 'Marca de co-branding (CPF Seguro + parceiro) centralizada.',
-        child: const CpfSeguroCobrandMark(partnerName: 'BANCO AURORA'),
       );
 }
 
@@ -1202,8 +1162,8 @@ class _LeftAccessorySpec extends StatelessWidget {
   Widget build(BuildContext context) {
     return SpecSection(
       title: 'LeftAccessory',
-      subtitle: 'Sealed class com 4 named constructors (spotIcon/avatar/'
-          'iconAccessory/progressRing). Sempre height 72, centraliza vertical. '
+      subtitle: 'Sealed class com 3 named constructors (spotIcon/avatar/'
+          'iconAccessory). Sempre height 72, centraliza vertical. '
           'Sem escape hatch custom — vocabulário fechado.',
       child: CpfSeguroSpecTable(
         cellWidth: 120,
@@ -1216,14 +1176,12 @@ class _LeftAccessorySpec extends StatelessWidget {
             'spotIcon()',
             'avatar()',
             'iconAccessory()',
-            'progressRing()',
           ]),
         ],
         cellBuilder: (r, c) => [
           const CpfSeguroLeftAccessory.spotIcon(icon: CpfSeguroIcons.userLight),
           const CpfSeguroLeftAccessory.avatar(initials: 'AM'),
           const CpfSeguroLeftAccessory.iconAccessory(icon: CpfSeguroIcons.bellLight, size: 28),
-          const CpfSeguroLeftAccessory.progressRing(progress: 0.65, label: '65%'),
         ][r],
       ),
     );
@@ -1958,79 +1916,6 @@ class _TooltipSpec extends StatelessWidget {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// StatusBanner — 4 variantes do fluxo Home
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _StatusBannerSpec extends StatelessWidget {
-  const _StatusBannerSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'StatusBanner',
-      composedOf: const ['IconAccessory', 'Color', 'Gradients', 'Shadow', 'Typography', 'Radius'],
-      subtitle: 'Gradient brand-lift · radius 24 · p 12/16 · blocos com gap 16: '
-          'LevelChip → row (ou ErrorPanel via body) → progress → footnote → button. '
-          'Slots: ActionIcon 40 (bg/border parametrizáveis, secure na pausa), '
-          'CTA circular 40, Button pill 28, Progress h5 fill secure-05.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 400,
-        cellHeight: 240,
-        columnGroups: const [
-          SpecAxisGroup(title: '·', subs: ['banner']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: 'Variante', subs: ['level', 'pausa ativa', 'doc em análise', 'doc erro']),
-        ],
-        cellBuilder: (r, c) {
-          final banner = switch (r) {
-            0 => const CpfSeguroStatusBanner(
-                level: 1,
-                eyebrow: 'PRÓXIMO PASSO',
-                title: 'Reconhecimento Facial · 30s',
-                leftAccessory: CpfSeguroStatusBannerActionIcon(icon: CpfSeguroIcons.cameraLight),
-                rightAccessory: CpfSeguroStatusBannerCTA(),
-              ),
-            1 => const CpfSeguroStatusBanner(
-                level: 3,
-                title: 'Seu CPF está no modo segurança',
-                subtitle: 'Pausado em 26/09/2026 por mim',
-                leftAccessory: CpfSeguroStatusBannerActionIcon(
-                  icon: CpfSeguroIcons.lockLight,
-                  bg: CpfSeguroColors.secure04,
-                  borderColor: CpfSeguroColors.secure07Alpha38,
-                ),
-                progress: CpfSeguroProgressBar.banner(
-                  confirmed: 10,
-                  total: 12,
-                  caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-                ),
-                button: CpfSeguroStatusBannerButton(label: 'Ver detalhes'),
-              ),
-            2 => const CpfSeguroStatusBanner(
-                level: 1,
-                eyebrow: 'EM ANÁLISE',
-                title: 'Documento em análise',
-                leftAccessory: CpfSeguroStatusBannerActionIcon(icon: CpfSeguroIcons.clockLight),
-              ),
-            _ => const CpfSeguroStatusBanner(
-                level: 1,
-                body: CpfSeguroStatusBannerErrorPanel(
-                  icon: CpfSeguroIcons.idCardLight,
-                  title: 'Não foi possível ler o documento',
-                  subtitle: 'Tente novamente em um lugar bem iluminado.',
-                ),
-                button: CpfSeguroStatusBannerButton(label: 'Reenviar documento'),
-              ),
-          };
-          return SizedBox(width: 360, child: banner);
-        },
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
 // InputChip — default/filled × trailIcon
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -2062,148 +1947,6 @@ class _InputChipSpec extends StatelessWidget {
             _ => null,
           },
           filled: c == 1,
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// ActivityProgress — única variante
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _ProgressRingSpec extends StatelessWidget {
-  const _ProgressRingSpec();
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'ProgressRing',
-      composedOf: const ['Color', 'Typography'],
-      subtitle: 'Anel circular. track primary-07, valor primary-04, cap round, label bodySm primary-04. Consumido por left.progressRing.',
-      child: Wrap(spacing: 24, children: const [
-        CpfSeguroProgressRing(progress: 0.25, label: '75'),
-        CpfSeguroProgressRing(progress: 0.6, label: '40'),
-        CpfSeguroProgressRing(progress: 0.9, label: '10'),
-      ]),
-    );
-  }
-}
-
-class _ProgressBarSpec extends StatelessWidget {
-  const _ProgressBarSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'ProgressBar',
-      composedOf: const ['Color', 'Typography', 'Radius'],
-      subtitle: 'Barra h5 + caption · 2 skins: .banner (trilho whiteAlpha24 + '
-          'fill secure-05 + caption primary-07, sobre gradient) e .activity '
-          '(trilho neutral-07 + fill primary-04 + caption neutral-05).',
-      child: CpfSeguroSpecTable(
-        cellWidth: 380,
-        cellHeight: 80,
-        columnGroups: const [
-          SpecAxisGroup(title: '·', subs: ['default']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: 'Skin', subs: ['banner', 'activity']),
-        ],
-        cellBuilder: (r, c) {
-          if (r == 0) {
-            return Container(
-              width: 340,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                gradient: CpfSeguroGradients.brandLift,
-                borderRadius: CpfSeguroRadius.all16,
-              ),
-              child: const CpfSeguroProgressBar.banner(
-                confirmed: 10,
-                total: 12,
-                caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-              ),
-            );
-          }
-          return const SizedBox(
-            width: 340,
-            child: CpfSeguroProgressBar.activity(
-              confirmed: 10,
-              total: 12,
-              caption: '10 de 12 parceiros confirmaram · 1 pendente · 1 falhou',
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// PartnerButton — normal × disabled
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _PartnerButtonSpec extends StatelessWidget {
-  const _PartnerButtonSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'PartnerButton',
-      composedOf: const ['Color', 'Typography', 'Radius'],
-      subtitle: 'CTA na cor do parceiro (partner-primary). 2 estados.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 220,
-        cellHeight: 72,
-        columnGroups: const [
-          SpecAxisGroup(title: 'State', subs: ['normal', 'disabled']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['button']),
-        ],
-        cellBuilder: (r, c) => CpfSeguroPartnerButton(
-          label: 'Continuar no Aurora',
-          onPressed: c == 0 ? () {} : null,
-          disabled: c == 1,
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// WalletCard — 4 variantes
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _WalletCardSpec extends StatelessWidget {
-  const _WalletCardSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'WalletCard',
-      composedOf: const ['IconAccessory', 'Color', 'Typography', 'Radius'],
-      subtitle: '345×180 · radius 24 · px 24 py 16. Variantes: cpfSeguro '
-          '(primary-04, wordmark + mark 25 + dígitos), partner (cardDark, '
-          'logo Swile + bandeira), skeleton (tarja, fluxo adicionar), '
-          'payment (label + wordmark + mark 36). Stack: peek 50 do parceiro.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 380,
-        cellHeight: 210,
-        columnGroups: const [
-          SpecAxisGroup(title: '·', subs: ['card']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: 'Variante', subs: ['cpfSeguro', 'partner', 'skeleton', 'payment']),
-        ],
-        cellBuilder: (r, c) => SizedBox(
-          width: 345,
-          child: switch (r) {
-            0 => const CpfSeguroWalletCard.cpfSeguro(),
-            1 => const CpfSeguroWalletCard.partner(),
-            2 => const CpfSeguroWalletCard.skeleton(),
-            _ => const CpfSeguroWalletCard.payment(),
-          },
         ),
       ),
     );
@@ -2484,243 +2227,6 @@ class _ReceiptSpec extends StatelessWidget {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// PaymentSheet — 3 estados
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _PaymentSheetSpec extends StatelessWidget {
-  const _PaymentSheetSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'PaymentSheet',
-      composedOf: const ['WalletCard', 'FaceIdCard', 'TopAppBar', 'Button', 'Icon'],
-      subtitle: 'Bottom sheet do pagamento (Figma 14967:20863) — projetado '
-          'como sheet pra um dia ser invocável fora do app. Sequência: '
-          'faceId (autentica) → approach (maquininha) → confirm (usuário VÊ '
-          'o valor num pill outline primary e toca Pagar) → processing (sem footer) → success (check verde + valor + CTA configurável) ou failed (retry + outro cartão). O fluxo inteiro mora no sheet.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 360,
-        cellHeight: 640,
-        columnGroups: const [
-          SpecAxisGroup(title: 'State', subs: ['faceId', 'approach', 'confirm', 'processing', 'success', 'failed']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['sheet']),
-        ],
-        cellBuilder: (r, c) {
-          final state = const [
-            CpfSeguroPaymentSheetState.faceId,
-            CpfSeguroPaymentSheetState.approach,
-            CpfSeguroPaymentSheetState.confirm,
-            CpfSeguroPaymentSheetState.processing,
-            CpfSeguroPaymentSheetState.success,
-            CpfSeguroPaymentSheetState.failed,
-          ][c];
-          return Container(
-            width: 340,
-            height: 620,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              color: CpfSeguroColors.white,
-              borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: CpfSeguroColors.neutral09, width: 1),
-            ),
-            child: Stack(children: [
-              CpfSeguroPaymentSheet(
-                open: true,
-                onClose: () {},
-                state: state,
-                value: state == CpfSeguroPaymentSheetState.confirm ||
-                        state == CpfSeguroPaymentSheetState.success
-                    ? 'R\$ 1,00'
-                    : null,
-                timestamp: state == CpfSeguroPaymentSheetState.success ? 'hoje às 17:43' : null,
-              ),
-            ]),
-          );
-        },
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// WalletButton — 2 variantes × disabled
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _WalletButtonSpec extends StatelessWidget {
-  const _WalletButtonSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'WalletButton',
-      composedOf: const ['Logo', 'Color', 'Typography', 'Radius'],
-      subtitle: 'Botão que o PARCEIRO embeda (padrão "Buy with Apple Pay"): '
-          'pill h56 primary-04 + logo + label fixo por variante. Sem '
-          'customização de cor — a marca é o contrato. Disabled é explícito.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 300,
-        cellHeight: 80,
-        columnGroups: const [
-          SpecAxisGroup(title: 'State', subs: ['default', 'disabled']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: 'Variant', subs: ['pay', 'manage']),
-        ],
-        cellBuilder: (r, c) => SizedBox(
-          width: 280,
-          child: CpfSeguroWalletButton(
-            variant: r == 0 ? CpfSeguroWalletButtonVariant.pay : CpfSeguroWalletButtonVariant.manage,
-            disabled: c == 1,
-            onPressed: c == 1 ? null : () {},
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// CheckoutSheet — methods × newCard
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _CheckoutSheetSpec extends StatelessWidget {
-  const _CheckoutSheetSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'CheckoutSheet',
-      composedOf: const ['AppList', 'AmountDisplay', 'Input', 'Checkbox', 'Button', 'TopAppBar'],
-      subtitle: 'Checkout e-commerce, bench iFood (invocado pelo WalletButton '
-          'na loja): summary (valores + forma de pagamento com Trocar) → '
-          'methods (Pix "aprovação na hora" + cartões + adicionar) → newCard '
-          '(form + Salvar na carteira) ou pix (copia e cola + expiração + '
-          'confirmação automática). Cartão segue pro PaymentSheet.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 360,
-        cellHeight: 780,
-        columnGroups: const [
-          SpecAxisGroup(title: 'State', subs: ['summary', 'methods', 'newCard', 'pix']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['sheet']),
-        ],
-        cellBuilder: (r, c) => Container(
-          width: 340,
-          height: 720,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            color: CpfSeguroColors.white,
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: CpfSeguroColors.neutral09, width: 1),
-          ),
-          child: Stack(children: [
-            CpfSeguroCheckoutSheet(
-              open: true,
-              onClose: () {},
-              state: const [
-                CpfSeguroCheckoutSheetState.summary,
-                CpfSeguroCheckoutSheetState.methods,
-                CpfSeguroCheckoutSheetState.newCard,
-                CpfSeguroCheckoutSheetState.pix,
-              ][c],
-              merchant: 'Pague menos',
-              merchantInitials: 'PM',
-              orderRef: 'Pedido #4821',
-              amount: 'R\$ 560,00',
-              lines: const [
-                CpfSeguroCheckoutLine(label: 'Subtotal', value: 'R\$ 545,00'),
-                CpfSeguroCheckoutLine(label: 'Taxa de serviço', value: 'R\$ 15,00'),
-                CpfSeguroCheckoutLine(label: 'Total', value: 'R\$ 560,00', emphasized: true),
-              ],
-              cards: const [
-                CpfSeguroCheckoutCard(label: 'CPF Seguro •••• 7654', sublabel: 'Cartão padrão'),
-                CpfSeguroCheckoutCard(label: 'CPF Seguro •••• 8890', sublabel: 'Crédito'),
-              ],
-              pixSelected: c == 3,
-              pixCode: '00020126580014BR.GOV.BCB.PIX0136a1b2c3d4-e5f6-7890-abcd-ef12345678905204000053039865405560.00'
-                  '5802BR5912CPF SEGURO SA6009SAO PAULO62070503***6304A1B2',
-              pixExpiry: '9:58',
-            ),
-          ]),
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// JourneyStep — 3 estados
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _JourneyStepSpec extends StatelessWidget {
-  const _JourneyStepSpec();
-
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'JourneyStep',
-      composedOf: const ['IconAccessory', 'StatusTag', 'Color', 'Typography', 'Radius'],
-      subtitle: 'Stepper vertical da Jornada. Conquistado = AZUL (primary, '
-          'circle-check sempre — nunca check solto); o que o usuário ainda '
-          'não tem = cinza. Conector DASHED 2px (azul no trecho concluído). '
-          'Capacidades sempre uma embaixo da outra. Cada nível carrega os '
-          'BOTÕES das próprias pendências (primary no próximo, secondary no '
-          'bloqueado) — pendência concluída some da lista.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 400,
-        cellHeight: 300,
-        columnGroups: const [
-          SpecAxisGroup(title: '·', subs: ['step']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: 'State', subs: ['done', 'next', 'locked']),
-        ],
-        cellBuilder: (r, c) => SizedBox(
-          width: 380,
-          child: switch (r) {
-            0 => const CpfSeguroJourneyStep(
-                number: '1',
-                title: 'Nível 1 · Cadastrado',
-                state: CpfSeguroJourneyStepState.done,
-                tag: CpfSeguroStatusTagData(label: 'Você está aqui', tone: CpfSeguroStatusTone.primary),
-                capabilities: [
-                  CpfSeguroFeatureCapability(icon: CpfSeguroIcons.shieldUserLightFull, label: 'Proteção básica ativa'),
-                ],
-              ),
-            1 => const CpfSeguroJourneyStep(
-                number: '2',
-                title: 'Nível 2 · Biométrico',
-                state: CpfSeguroJourneyStepState.next,
-                tag: CpfSeguroStatusTagData(label: 'Próximo passo', tone: CpfSeguroStatusTone.warning),
-                capabilities: [
-                  CpfSeguroFeatureCapability(icon: CpfSeguroIcons.fingerprintLight, label: 'Login por biometria'),
-                ],
-                actions: [
-                  CpfSeguroJourneyAction(icon: CpfSeguroIcons.cameraLight, label: 'Fazer reconhecimento facial'),
-                ],
-              ),
-            _ => const CpfSeguroJourneyStep(
-                number: '3',
-                title: 'Nível 3 · Verificado',
-                state: CpfSeguroJourneyStepState.locked,
-                tag: CpfSeguroStatusTagData(label: 'Te esperando', tone: CpfSeguroStatusTone.neutral, icon: CpfSeguroIcons.lockLight),
-                capabilities: [
-                  CpfSeguroFeatureCapability(icon: CpfSeguroIcons.pauseLightFull, label: 'Pausar CPF'),
-                ],
-                isLast: true,
-              ),
-          },
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
 // COBERTURA COMPLETA — specs adicionados p/ refletir 100% dos componentes
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -2982,31 +2488,6 @@ class _StepperSpec extends StatelessWidget {
   }
 }
 
-class _CobrandedBadgeSpec extends StatelessWidget {
-  const _CobrandedBadgeSpec();
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'CobrandedBadge',
-      composedOf: const ['Logo', 'Color', 'Typography'],
-      subtitle: 'Prefixo labelSm + Logo full 40 na cor primary · centralizado. Cobranding "Protegido por".',
-      child: CpfSeguroSpecTable(
-        cellWidth: 260,
-        cellHeight: 60,
-        columnGroups: const [
-          SpecAxisGroup(title: 'Prefix', subs: ['Protegido por', 'Login por']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['badge']),
-        ],
-        cellBuilder: (r, c) => CpfSeguroCobrandedBadge(
-          prefix: c == 0 ? 'Protegido por' : 'Login por',
-        ),
-      ),
-    );
-  }
-}
-
 class _NavSpec extends StatelessWidget {
   const _NavSpec();
   @override
@@ -3262,36 +2743,6 @@ class _KeyboardSpec extends StatelessWidget {
   }
 }
 
-class _WalletCardStackSpec extends StatelessWidget {
-  const _WalletCardStackSpec();
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'WalletCardStack',
-      composedOf: const ['WalletCard'],
-      subtitle: 'Empilha 2 WalletCards · altura = 180 + peek (default 50 = 230). Front sobre back.',
-      child: CpfSeguroSpecTable(
-        cellWidth: 380,
-        cellHeight: 250,
-        columnGroups: const [
-          SpecAxisGroup(title: 'peek', subs: ['50']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['stack']),
-        ],
-        cellBuilder: (r, c) => const SizedBox(
-          width: 345,
-          child: CpfSeguroWalletCardStack(
-            back: CpfSeguroWalletCard.partner(),
-            front: CpfSeguroWalletCard.cpfSeguro(),
-            peek: 50,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 // ─── ORGANISMS ───────────────────────────────────────────────────────────────
 
 class _TopAppBarSpec extends StatelessWidget {
@@ -3391,49 +2842,6 @@ class _BottomAppSpecState extends State<_BottomAppSpec> {
                 input: CpfSeguroChatInput(controller: _chat, placeholder: 'Digite...'),
               ),
           },
-        ),
-      ),
-    );
-  }
-}
-
-class _ChatCompletionCardSpec extends StatelessWidget {
-  const _ChatCompletionCardSpec();
-  @override
-  Widget build(BuildContext context) {
-    return SpecSection(
-      title: 'ChatCompletionCard',
-      composedOf: const ['Button', 'StatusTag', 'Color', 'Gradients', 'Typography', 'Radius'],
-      subtitle: 'Card gradient brand-lift (radius 24 · shadow brandHigh). minimal (title+primary) '
-          'vs full (eyebrow + levelChip + capabilities + nextLevel + primary/secondary).',
-      child: CpfSeguroSpecTable(
-        cellWidth: 400,
-        cellHeight: 380,
-        columnGroups: const [
-          SpecAxisGroup(title: 'Perfil', subs: ['minimal', 'full']),
-        ],
-        rowGroups: const [
-          SpecAxisGroup(title: '·', subs: ['card']),
-        ],
-        cellBuilder: (r, c) => SizedBox(
-          width: 360,
-          child: c == 0
-              ? CpfSeguroChatCompletionCard(
-                  title: 'Migração concluída',
-                  primary: CpfSeguroCtaAction(label: 'Continuar', onPressed: () {}),
-                )
-              : CpfSeguroChatCompletionCard(
-                  title: 'Nível 2 desbloqueado',
-                  eyebrow: 'Parabéns',
-                  levelChip: const CpfSeguroLevelProgress(current: 2, total: 3),
-                  capabilities: const [
-                    CpfSeguroCompletionCapability(icon: CpfSeguroIcons.shieldUserLightFull, label: 'Conta protegida'),
-                    CpfSeguroCompletionCapability(icon: CpfSeguroIcons.gaugeMaxLight, label: 'Acesso rápido'),
-                  ],
-                  nextLevelLabel: 'Próximo: Nível 3',
-                  primary: CpfSeguroCtaAction(label: 'Avançar', onPressed: () {}),
-                  secondary: CpfSeguroCtaAction(label: 'Depois', onPressed: () {}),
-                ),
         ),
       ),
     );
