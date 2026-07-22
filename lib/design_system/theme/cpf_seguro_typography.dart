@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'cpf_seguro_colors.dart';
+import 'cpf_seguro_fonts.dart';
 import 'generated/cps_type_tokens.g.dart';
 
 /// CPF SEGURO — Typography.
@@ -16,34 +17,37 @@ class CpfSeguroType {
   // ============ DISPLAY — hero screens, marketing ==========================
   // Inversão L3: a escala M3 + vozes limpas consomem o gerado do DTCG
   // (CpfSeguroTypeConsts, de tokens/type.tokens.json).
-  static const TextStyle displayLg = CpfSeguroTypeConsts.displayLg;
-  static const TextStyle displayMd = CpfSeguroTypeConsts.displayMd;
-  static const TextStyle displaySm = CpfSeguroTypeConsts.displaySm;
+  //
+  // A Ponte: Display/Headline usam Poppins; Title/Label/Body usam Roboto Flex
+  // (ver CpfSeguroFonts — arquivos de fonte ainda pendentes de adicionar).
+  static final TextStyle displayLg = CpfSeguroTypeConsts.displayLg.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
+  static final TextStyle displayMd = CpfSeguroTypeConsts.displayMd.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
+  static final TextStyle displaySm = CpfSeguroTypeConsts.displaySm.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
 
   // ============ HEADLINE — títulos de seção grandes (w600, = app) ==========
-  static const TextStyle headlineLg = CpfSeguroTypeConsts.headlineLg;
-  static const TextStyle headlineMd = CpfSeguroTypeConsts.headlineMd;
-  static const TextStyle headlineSm = CpfSeguroTypeConsts.headlineSm;
+  static final TextStyle headlineLg = CpfSeguroTypeConsts.headlineLg.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
+  static final TextStyle headlineMd = CpfSeguroTypeConsts.headlineMd.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
+  static final TextStyle headlineSm = CpfSeguroTypeConsts.headlineSm.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
 
   // ============ TITLE — títulos de screen/card =============================
-  static const TextStyle titleLg = CpfSeguroTypeConsts.titleLg;
-  static const TextStyle titleMd = CpfSeguroTypeConsts.titleMd;
-  static const TextStyle titleSm = CpfSeguroTypeConsts.titleSm;
+  static final TextStyle titleLg = CpfSeguroTypeConsts.titleLg.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static final TextStyle titleMd = CpfSeguroTypeConsts.titleMd.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static final TextStyle titleSm = CpfSeguroTypeConsts.titleSm.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   // ============ BODY — texto de leitura ====================================
-  static const TextStyle bodyLg = CpfSeguroTypeConsts.bodyLg;
-  static const TextStyle bodyMd = CpfSeguroTypeConsts.bodyMd;
-  static const TextStyle bodySm = CpfSeguroTypeConsts.bodySm;
+  static final TextStyle bodyLg = CpfSeguroTypeConsts.bodyLg.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static final TextStyle bodyMd = CpfSeguroTypeConsts.bodyMd.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static final TextStyle bodySm = CpfSeguroTypeConsts.bodySm.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   // ============ LABEL — botões, chips, eyebrows ============================
-  /// Card titles ("Sou eu!", "CPF Seguro") — SF Pro Rounded Semibold.
-  static const TextStyle labelLg = CpfSeguroTypeConsts.labelLg;
+  /// Card titles ("Sou eu!", "CPF Seguro") — Roboto Flex Medium (A Ponte).
+  static final TextStyle labelLg = CpfSeguroTypeConsts.labelLg.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   /// Section headers ("PARA VOCÊ"), "Ver todos".
-  static const TextStyle labelMd = CpfSeguroTypeConsts.labelMd;
+  static final TextStyle labelMd = CpfSeguroTypeConsts.labelMd.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   /// Banner chip "Nível 1 de 3", banner eyebrow, status tags, tile labels.
-  static const TextStyle labelSm = CpfSeguroTypeConsts.labelSm;
+  static final TextStyle labelSm = CpfSeguroTypeConsts.labelSm.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   // ═══════════════════════════════════════════════════════════════════════
   // VOZES — a API semântica (Apple-style: um nome por degrau). Cor SEMPRE do

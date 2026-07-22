@@ -1,5 +1,10 @@
 name: cpf_seguro_design_system
-description: Design System "A Ponte" — adaptado a partir da arquitetura do cpf-seguro-ds, com tokens, roles semânticos, gramática (Surface) e widgets Flutter. Consumível como package + catálogo Flutter Web. (TODO: renomear pacote/prefixo Dart de cpf_seguro_* para o nome final do projeto — ver TOKENS_MAPPING.md)
+description: >-
+  Design System "A Ponte", adaptado a partir da arquitetura do cpf-seguro-ds,
+  com tokens, roles semânticos, gramática (Surface) e widgets Flutter.
+  Consumível como package + catálogo Flutter Web. TODO - renomear
+  pacote/prefixo Dart de cpf_seguro_* para o nome final do projeto, ver
+  TOKENS_MAPPING.md.
 version: 0.1.0
 publish_to: none
 repository: git@github.com:tatianahasimoto-netizen/apontesegura.git
@@ -40,3 +45,16 @@ flutter:
           weight: 700
         - asset: assets/fonts/SF-Pro-Rounded-Heavy.otf
           weight: 800
+    # TODO(a-ponte): registrar aqui as famílias reais do A Ponte assim que os
+    # arquivos existirem em assets/fonts/ (ver CpfSeguroFonts.familyPoppins /
+    # familyRobotoFlex e TOKENS_MAPPING.md). Exemplo de shape esperado:
+    # - family: Poppins
+    #   fonts:
+    #     - asset: assets/fonts/Poppins-SemiBold.ttf
+    #       weight: 600
+    # - family: Roboto Flex
+    #   fonts:
+    #     - asset: assets/fonts/RobotoFlex-Regular.ttf
+    #       weight: 400
+    #     - asset: assets/fonts/RobotoFlex-Medium.ttf
+    #       weight: 500

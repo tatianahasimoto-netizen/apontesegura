@@ -23,4 +23,20 @@ abstract final class CpfSeguroFonts {
 
   /// Nome cru da família (uso interno do package / catálogo).
   static const String familyRaw = 'SF Pro Rounded';
+
+  // ===========================================================================
+  // A Ponte — duas famílias por camada tipográfica (Poppins para Display/
+  // Headline, Roboto Flex para Title/Label/Body). Usadas em CpfSeguroType via
+  // `.copyWith(fontFamily: ...)`.
+  //
+  // TODO(a-ponte): os arquivos de fonte ainda não foram adicionados a
+  // assets/fonts/ nem registrados no `flutter: fonts:` do pubspec.yaml — sem
+  // isso o Flutter cai no fallback do sistema silenciosamente (não quebra o
+  // build, só não renderiza a fonte certa). Baixar/licenciar Poppins SemiBold
+  // e Roboto Flex (Regular/Medium), colocar em assets/fonts/ e registrar no
+  // pubspec.yaml antes de considerar isso pronto.
+  // ===========================================================================
+
+  static const String familyPoppins = 'Poppins';
+  static const String familyRobotoFlex = 'Roboto Flex';
 }

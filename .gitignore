@@ -50,3 +50,6 @@ flutter/
 
 # Node (pipeline de tokens)
 node_modules/
+
+# Claude Code local settings (personal permission overrides)
+.claude/settings.local.json
