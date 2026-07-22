@@ -20,34 +20,39 @@ class CpfSeguroType {
   //
   // A Ponte: Display/Headline usam Poppins; Title/Label/Body usam Roboto Flex
   // (ver CpfSeguroFonts — arquivos de fonte ainda pendentes de adicionar).
-  static final TextStyle displayLg = CpfSeguroTypeConsts.displayLg.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
-  static final TextStyle displayMd = CpfSeguroTypeConsts.displayMd.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
-  static final TextStyle displaySm = CpfSeguroTypeConsts.displaySm.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
+  // NOTA: escritos como literais `const TextStyle(...)` (duplicando os valores
+  // do gerado) em vez de `CpfSeguroTypeConsts.x.copyWith(fontFamily: ...)`
+  // porque `.copyWith` não é const, e o catálogo (lib/main.dart) referencia
+  // esses campos dentro de coleções `const` — usar `final`/`copyWith` aqui
+  // quebra a compilação em toda referência `const` existente.
+  static const TextStyle displayLg = TextStyle(fontSize: 57, fontWeight: FontWeight.w600, height: 64 / 57, letterSpacing: -0.25, fontFamily: CpfSeguroFonts.familyPoppins);
+  static const TextStyle displayMd = TextStyle(fontSize: 45, fontWeight: FontWeight.w600, height: 52 / 45, letterSpacing: 0, fontFamily: CpfSeguroFonts.familyPoppins);
+  static const TextStyle displaySm = TextStyle(fontSize: 36, fontWeight: FontWeight.w600, height: 44 / 36, letterSpacing: 0, fontFamily: CpfSeguroFonts.familyPoppins);
 
   // ============ HEADLINE — títulos de seção grandes (w600, = app) ==========
-  static final TextStyle headlineLg = CpfSeguroTypeConsts.headlineLg.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
-  static final TextStyle headlineMd = CpfSeguroTypeConsts.headlineMd.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
-  static final TextStyle headlineSm = CpfSeguroTypeConsts.headlineSm.copyWith(fontFamily: CpfSeguroFonts.familyPoppins);
+  static const TextStyle headlineLg = TextStyle(fontSize: 32, fontWeight: FontWeight.w600, height: 40 / 32, letterSpacing: 0, fontFamily: CpfSeguroFonts.familyPoppins);
+  static const TextStyle headlineMd = TextStyle(fontSize: 28, fontWeight: FontWeight.w600, height: 36 / 28, letterSpacing: 0, fontFamily: CpfSeguroFonts.familyPoppins);
+  static const TextStyle headlineSm = TextStyle(fontSize: 24, fontWeight: FontWeight.w600, height: 32 / 24, letterSpacing: 0, fontFamily: CpfSeguroFonts.familyPoppins);
 
   // ============ TITLE — títulos de screen/card =============================
-  static final TextStyle titleLg = CpfSeguroTypeConsts.titleLg.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
-  static final TextStyle titleMd = CpfSeguroTypeConsts.titleMd.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
-  static final TextStyle titleSm = CpfSeguroTypeConsts.titleSm.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle titleLg = TextStyle(fontSize: 22, fontWeight: FontWeight.w500, height: 28 / 22, letterSpacing: 0, fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle titleMd = TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 24 / 16, letterSpacing: 0.15, fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle titleSm = TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 20 / 14, letterSpacing: 0.1, fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   // ============ BODY — texto de leitura ====================================
-  static final TextStyle bodyLg = CpfSeguroTypeConsts.bodyLg.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
-  static final TextStyle bodyMd = CpfSeguroTypeConsts.bodyMd.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
-  static final TextStyle bodySm = CpfSeguroTypeConsts.bodySm.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle bodyLg = TextStyle(fontSize: 16, fontWeight: FontWeight.w400, height: 24 / 16, letterSpacing: 0.5, fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle bodyMd = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, height: 20 / 14, letterSpacing: 0.25, fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle bodySm = TextStyle(fontSize: 12, fontWeight: FontWeight.w400, height: 16 / 12, letterSpacing: 0.4, fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   // ============ LABEL — botões, chips, eyebrows ============================
   /// Card titles ("Sou eu!", "CPF Seguro") — Roboto Flex Medium (A Ponte).
-  static final TextStyle labelLg = CpfSeguroTypeConsts.labelLg.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle labelLg = TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 20 / 14, letterSpacing: 1.4, fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   /// Section headers ("PARA VOCÊ"), "Ver todos".
-  static final TextStyle labelMd = CpfSeguroTypeConsts.labelMd.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle labelMd = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 16 / 12, letterSpacing: 0.5, fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   /// Banner chip "Nível 1 de 3", banner eyebrow, status tags, tile labels.
-  static final TextStyle labelSm = CpfSeguroTypeConsts.labelSm.copyWith(fontFamily: CpfSeguroFonts.familyRobotoFlex);
+  static const TextStyle labelSm = TextStyle(fontSize: 11, fontWeight: FontWeight.w500, height: 16 / 11, letterSpacing: 0.5, fontFamily: CpfSeguroFonts.familyRobotoFlex);
 
   // ═══════════════════════════════════════════════════════════════════════
   // VOZES — a API semântica (Apple-style: um nome por degrau). Cor SEMPRE do
